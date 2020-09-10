@@ -1,0 +1,5 @@
+{
+    "host": "http://localhost:3001",
+
+    "options": " http://localhost:3000 | https://arzobispado-lima.herokuapp.com "
+}

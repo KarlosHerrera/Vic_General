@@ -1,0 +1,89 @@
+/*  crudTables.css  */
+/* @import url('./../assets/css/scroll_bar.css'); */
+.content {
+    height:100%;  
+  }
+  .content-title {
+    /* height: 7%;   */
+    padding: 2px;
+  }
+  .content-body {
+    height: 84%;
+    border: 1px solid gray;
+      margin: 0.25rem 0.1rem;
+  }
+  .content-footer {
+      height: 5%;
+  padding: 1px;
+  }
+  .titulo_2 {
+      font-size: 1.2rem;
+        font-weight: 600;
+      color: black;
+  }
+  .itemCurrent {
+        height: 1.7rem;
+  padding: 4px  ;
+  }
+  /* .filterInput {
+     height: 1.5rem !important;
+  } */
+  .content-search {
+   height: 1.5rem !important;
+  
+  }
+  .detailRecord {
+    /* border: 1px solid darkslategray; */
+    width: 100%;
+    padding: 0.27rem;
+  
+  }
+  .formBase {
+  padding: 0.45rem;
+  
+  }
+  .fila {
+    display: flex;
+    height: 1.7rem;
+    padding: 2px;
+    margin: 2px 0;
+  
+  }
+  .btn_detail, .btn_new {
+    width: 4rem;
+  
+  }
+  
+  thead tr {
+       /* height: 1.6rem !important;  */
+    /* background-color: rgb(66, 31, 31);      */
+  }
+  tbody tr {
+       height: 1.3rem !important;   
+  }
+  tbody tr td {
+  
+  padding: 2px 3px;
+  }
+  .v-select {
+    background-color: white;
+  /* border: 0.066rem solid darkgray !important; */
+    /* border: none; */
+    /* height: 2rem;  */
+  }
+  select:focus{ outline: none ;}
+  select.decorated option:hover { 
+      box-shadow: 0 0 10px 100px #38809b inset !important; 
+  } 
+  select > option:hover { 
+    color: #1B517E; 
+    cursor: pointer; 
+  }
+  /* -------- -- Media Queries --------*/
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {  /* lg */
+  }  /*  End lg */  
+  
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {  /* xl */
+  }   /*  End xl */

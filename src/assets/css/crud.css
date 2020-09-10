@@ -1,0 +1,42 @@
+/* crud.css  */
+
+@charset "UTF-8";
+
+.content {
+  height: 99%;
+  padding: 0.1rem 0;
+  margin: 0.25rem 0;
+  border: 1.3px solid gray !important;
+}
+.content-title, .content-header, .content-body, .content-footer {
+  /* padding: 0.09rem 0rem; */
+  margin: 0.15rem 0;
+/* border: 1px solid blue !important; */
+}
+.content-title {
+
+}
+.content-header {
+  text-align: center;
+  height: 2rem;
+  /* padding: 0.3rem 0; */
+}
+.content-body {
+  padding: 7px;    
+/* height: 90%; */
+}
+/* #bodyTable {
+    overflow: auto;
+} */
+.content-footer {
+  height: 0;
+}
+
+.headerTitle {
+  font-size: 1.15rem;
+  color: var(--colorTitle);
+  text-align: center;
+  line-height: 1.3rem;
+
+} 
+ 

@@ -1,0 +1,43 @@
+/* scroll_bar.css */
+/*  ----- ScrollBar -------*/
+/*  https://css-tricks.com/custom-scrollbars-in-webkit/  */
+
+/* Fondo de la barra de desplazamiento */
+.scroll_1::-webkit-scrollbar {
+    /* width: 1.1rem; */
+    background-color:silver;
+    border-radius: 0.3rem;
+    /* padding: 1px 1px; */
+}
+/* Botones direccionales */
+.scroll_1::-webkit-button {
+
+}
+/* Espacio vacio "debajo" de la barra de progreso */
+.scroll_1::-webkit-track {
+    background-color: blue;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+/* background-color: red; */
+}
+/* Elemento de desplazamiento. Cambia de tamano segun elemento desplazable*/
+.scroll_1::-webkit-scrollbar-thumb {
+    /* width: 0.2rem; */
+    background: lightgray;
+    border-radius: 1.3rem;
+    /* border-top: 1px solid blue;
+    border-left: 1px solid blue;;
+    border-right: 1px solid blue; 
+    border-bottom: 1px solid blue;  */
+    border: 0.1rem solid whitesmoke;
+    /* border: 1px; */
+
+}
+/* Aborda la esquina inferior del elemento desplazamiento */
+.scroll_1::-webkit-scrollbar-corner {
+   border: 1px solid yellow;
+}
+/*  */
+.scroll_1::-webkit-resizer {
+
+}
+/*  End ScrollBar*/

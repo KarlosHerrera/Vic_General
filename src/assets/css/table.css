@@ -1,0 +1,157 @@
+/* Table */
+
+@charset "UTF-8";
+:root {
+    --flecha: 0.33rem;
+}
+
+table {
+    /* width: 400px; */
+    /* height: 600px; */
+
+    /* width: 100%; */
+    border-collapse: collapse;
+    background-color: transparent;
+    border-spacing: 0.214rem;   /*  espaciado entre  celdas */
+    /* border: 1px solid black; */
+    /* empty-cells: show; */
+ 
+}
+thead {
+    background-color: inherit;
+    /* position: static; */
+   
+}
+thead > tr {
+    background-color: rgb(194, 192, 192);
+    background-color: silver;
+    cursor: pointer;
+    height: 2rem;
+    font-weight: 400;
+    border: 1px solid blue;
+    border-radius: var(--border-radius) !important;   
+}
+tbody tr {
+    height: 1.7rem;    
+}
+thead tr th {
+    /* position: fixed; */
+
+}
+tr th {
+    font-weight: 500 !important;
+    order: 1px solid blue; /* test */
+}
+th {
+    user-select: none;
+}
+th:hover {
+    color: black; 
+}
+th.active {
+    color: blue;
+}
+tbody { 
+    /* overflow-y: scroll; */
+}
+
+
+tbody tr {
+    height: 1.1rem !important;
+    vertical-align: center !important; 
+
+}
+thead tr th, tbody tr td {
+    vertical-align: middle;
+}
+/* table:nth-child(odd) {
+    fila impar
+background-color: #E0DAE9;
+} 
+table:nth-child(even) {
+    fila par
+background-color: #DBE9E7;
+} */
+ 
+.t_options {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+
+}
+
+/*  ----- ScrollBar -------*/
+/*  https://css-tricks.com/custom-scrollbars-in-webkit/  */
+
+/* Fondo de la barra de desplazamiento */
+.scroll_1::-webkit-scrollbar {
+    /* width: 1.1rem; */
+    background-color:silver;
+    border-radius: 0.3rem;
+    /* padding: 1px 1px; */
+}
+/* Botones direccionales */
+.scroll_1::-webkit-button {
+
+}
+/* Espacio vacio "debajo" de la barra de progreso */
+.scroll_1::-webkit-track {
+    background-color: blue;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+/* background-color: red; */
+}
+/* Elemento de desplazamiento. Cambia de tamano segun elemento desplazable*/
+.scroll_1::-webkit-scrollbar-thumb {
+    /* width: 0.2rem; */
+    background: lightgray;
+    border-radius: 1.3rem;
+    /* border-top: 1px solid blue;
+    border-left: 1px solid blue;;
+    border-right: 1px solid blue; 
+    border-bottom: 1px solid blue;  */
+    border: 0.1rem solid whitesmoke;
+    /* border: 1px; */
+
+}
+/* Aborda la esquina inferior del elemento desplazamiento */
+.scroll_1::-webkit-scrollbar-corner {
+   border: 1px solid yellow;
+}
+/*  */
+.scroll_1::-webkit-resizer {
+
+}
+/*  End ScrollBar*/
+
+
+/*  */
+.arrow {
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+    margin-left: var(--flecha);
+    opacity: 0.66;
+    opacity: 0.80;
+}
+.noarrow{
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+    margin-left: var(--flecha);
+    border: var(--flecha) solid transparent;
+}
+  
+.arrow.asc {
+    border-left: var(--flecha) solid transparent;
+    border-right: var(--flecha) solid transparent;
+    border-bottom: var(--flecha) solid #fff;
+}
+
+.arrow.dsc {
+    border-left: var(--flecha) solid transparent;
+    border-right: var(--flecha) solid transparent;
+    border-top: var(--flecha) solid #fff;
+}
+  /*  End */

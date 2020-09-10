@@ -1,0 +1,37 @@
+{
+    "icon": "",
+    "title": "Sweet Alert 2",
+    "text": "Text",
+    "timer": 0,
+    "allowOutsideClick": false,  
+    "showCloseButton": true,
+    "showCancelButton": false,
+    "timerProgressBar": true,
+    "customClass": { 
+        "container": "container-class",
+        "popup": "popup-class",
+        "header": "header-class",
+        "icon": "icon-class",
+        "title": "title-class",
+        "text": "text-class",
+        "closeButton": "close-button-class",
+        "image": "image-class",
+        "content": "content-class",
+        "input": "input-class",
+        "actions": "actions-class",
+        "confirmButton": "confirm-button-class",
+        "cancelButton": "cancel-button-class",
+        "footer": "footer-class"
+    },
+    "focusConfirm": false,
+    "focusCancel": false,
+    "backdrop": true,
+    "showClass": {
+        "popup": "animated fadeInDown faster"
+    },
+    "hideClass": {
+        "popup": "animated fadeOutUp faster"
+    },
+    "doc": {"key":"Sweet Alert 2 (Documentation)"}
+}
+
