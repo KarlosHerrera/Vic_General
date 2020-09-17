@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router/router.js';
 import store from './store/store.js';
 
+import "bootstrap/dist/css/bootstrap.min.css"
 import filtratabla from '@/components/filtra-tabla.vue';
 
 import moment from 'moment';

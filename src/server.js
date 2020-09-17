@@ -11,6 +11,8 @@ const moment = require('moment');
 const app = express();
 
 
+// Controladores
+const pliegomatrimonialCtrl = require('./controllers/pliegoMatrimonialCtrl');
 
 app.set('port', process.env.PORT || 3001);  // Configuracion de puerto (variables globales)
 
@@ -25,7 +27,7 @@ app.use(express.static(path.join(__dirname, './public')));
 
 
 // Server routers-controllers
-
+app.use('/pliegomatrimonial', pliegomatrimonialCtrl);
 
 
 // Settings

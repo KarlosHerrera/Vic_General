@@ -8,19 +8,19 @@
 :root {
     /* Back */
     --background-back: rgb(240, 255, 255);
-    --background-back: rgb(243, 220, 220);
+    --background-back: rgb(176, 196, 222);
     /*  Main  */
     --background-main: rgb(224, 255, 255);
     --background-main: rgb(221, 224, 224);
     --color-main: black;
     /* Content */
-    --background-content: rgb(65, 218, 134);
+    --background-content: rgb(112, 241, 170);
     --border-radius: 0.20rem;
     /* --border-main: 
     --border-content:  */
     
     /*  Menu NavBar */
-    --background-menu: rgb(135, 206, 235);
+    --background-menu: rgb(157, 197, 212);
     --font-color: black;
     --font-color_hover: white;
 
@@ -78,9 +78,14 @@
     font-family: 'Dosis', sans-serif;
 }    
 html, body{
-    margin: 0px;
-    height: 99%;
+    margin: 0;
+    padding: 0;
+    margin: 0;
+    /* height: 99%; */
     /* height: 100vw; */
+    box-sizing: border-box;
+    /* -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box; */
 }
 body {
     font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -96,31 +101,17 @@ body {
     background-size: auto; */
     /* min-width: 360px; */
     /* border-radius: var(--border-radius) !important;  */
-    display: flex;
-    justify-content: center;
-    align-items: center;
     /* max-width: 1024px;  */
-    /* width: 100vw;
-    height: 100vh; */
+    width: 99vw; 
+    height: 99vh;
+    /* width: 100%; */
+    /* height: 100%; */
 
 }
-#app {
-    /* display: flex; */
-    /* justify-content: center;
-    align-items: center; */
-    margin: 0.62rem;
-    padding: 0.31rem; 
-    height: 98.5%; 
-    background-color: var(--background-main);
-    /* height: 600px;      */
-} 
 
 .main {
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    width: 80%;
-    height: 94%; 
+    width: 97%;
+    /* height: 94%;   */
     /* height: 600px;      */
 }
 div, form, input, table, nav {
@@ -193,16 +184,18 @@ div, form, input, table, nav {
     border: 1px solid rgb(151, 150, 150);
   }
 input:focus{ outline: none; }  
-
+.sinpadding [class*="col-"] {
+    padding: 0;
+}
 /* -------- -- Media Queries --------*/
 @media (min-width: 576px) {   /* xs */
-    /* html{
+    html{
         font-size: 12px;
     }
     body {
         background-color: comflowerblue;
     
-    } */
+    }
     
 }  /*  End xs */
     

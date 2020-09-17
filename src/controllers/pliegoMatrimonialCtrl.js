@@ -42,10 +42,8 @@ router.get('/', (req, res) => {
 });
 // Get all documents
 router.get('/all', (req, res) => {
-    // console.log('religiosos/all');
-    let sql = `SELECT codReligioso, apellidosNombres, codJerarquia, codReligioso, codCargo, codInstitucion,
-                    (SELECT count(*) FROM firmareligiosos WHERE firmareligiosos.codReligioso = religiosos.codReligioso) AS num_firmas
-              FROM religiosos WHERE activo='S' ORDER BY apellidosNombres`;
+    console.log('pliegomatrimonial/all');
+    let sql = `SELECT * FROM pliegomatrimonial WHERE activo='S' ORDER BY numeroExpediente`;
     conn.query(sql, function(err, rows){
         if(err) throw err;
         res.status(200).json(rows);
@@ -151,26 +149,5 @@ router.delete('/delete', async (req, res) => {
     }); 
 
 });
-// /firma/:codReligioso
-router.get('/firmas/:codReligioso', async (req, res) => {
-    // console.log(`${ req.url }`);
-    let codReligioso = req.params.codReligioso;
 
-    let sql = `SELECT codFirmas, codReligioso, firma
-                FROM firmareligiosos 
-                WHERE activo='S' AND codReligioso= ?  
-                ORDER BY codFirmas`;
-    conn.query(sql, [ codReligioso ] ,function(err, rows){
-        if(err) console.log('err => ', err);
-        console.log('rows = ', rows);
-        res.status(200).json(rows);
-    });
-
-});
-// res.set('Content-Type', 'text/plain')
-
-// pass a local variable to the view
-//res.render('user', { name: 'Tobi' }, function (err, html) {
-    // ...
-//  });
 module.exports = router;

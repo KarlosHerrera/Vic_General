@@ -1,7 +1,7 @@
 <template>
-  <div id='app' class='container'>
-    <!-- <Home></Home> -->
-      <div id='main' class="main">
+  <div id='app' class='d-flex flex-column'>
+    <Home></Home>
+      <div id='main' class="main d-flex align-self-center">
         <!-- <Menu></Menu>  -->
         <router-view/>
       </div>
@@ -12,13 +12,13 @@
 <script>
 console.log('<<< app.vue >>>');
 
-// import Home from './components/Home.vue'
+import Home from './components/Home.vue'
 // import Menu from './components/Menu.vue'
 
 export default {
   name: 'App',
   components: {
-    // Home,
+    Home,
     // Menu
   },
   methods: {
@@ -36,7 +36,23 @@ export default {
 </script>
 
 <style>
+#app, .main {
+  margin: 0.10rem;
+  padding: 0.16rem;
+}
 #app {
-  width: 99%;
+  /* display: flex; */
+  /* justify-content: center;
+  align-items: center; */
+
+  height: 97%; 
+  width: 97%;
+  background-color: var(--background-main);
+
+}
+.main {
+
+ height: 95%;
+  /* padding: 5px 0; */
 }
 </style>

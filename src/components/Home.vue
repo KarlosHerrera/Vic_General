@@ -1,33 +1,30 @@
 //  Home.vue
 <template>
-  <div class='d-flex'>
-    <div id='Home' class="col-12 home ">  
-      <div>
-      <router-link class="" to="/">Vicaria General</router-link>
+  <!-- <div class='d-flex'> -->
+    <div id='Home' class="home d-flex justify-content-between align-content-start">  
+      <div class='col-6 d-flex justify-content-start align-items-center'>
+        <router-link class="brand" to="/menu">Vicaria General</router-link>
       </div>
-
-      <div class="" id="navbarNav">
-
-            <!-- Acceso y control de opciones -->
-            <div class="">
-              <div class='icon_ctn' @click='userRole()' v-if="User_Name == '' " data-toggle="tooltip" data-placement="bottom" title="Iniciar Sesion">
-                <i class="icon_user">?</i>
-              </div>
-              <div class='icon_ctn' @click="userRole()" v-if="User_Name != '' " data-toggle="tooltip" data-placement="bottom" :title="userCurrent">
-                <i class="icon_user">{{ iconUser }}</i>
-              </div>
-              <!-- Componente   --> 
-                <!-- <div id='userRole' class="drowndown" >                        
-                  <ul class="dropdown-menu dropdown-menu-right" :class="{show: roleView}" role="menu" aria-labelledby="userRole">
-                    <li class='dropdown-item' v-for="(item, index) in listOptionsPerfil" :key='index' @click='actionRole(index)'>{{ item.dsc }}</li>
-                  </ul>
-                </div> -->
-            </div>
+      <div class="col-6 d-flex justify-content-end align-items-center">
+        <!-- Acceso y control de opciones -->
+        <!-- <div class="col-6 d-flex align-items-end"> -->
+          <div class='icon_ctn' @click='userRole()' v-if="User_Name == '' " data-toggle="tooltip" data-placement="bottom" title="Iniciar Sesion">
+            <i class="icon_user">?</i>
+          </div>
+          <div class='icon_ctn' @click="userRole()" v-if="User_Name != '' " data-toggle="tooltip" data-placement="bottom" :title="userCurrent">
+            <i class="icon_user">{{ iconUser }}</i>
+          </div>
+          <!-- Componente   --> 
+            <!-- <div id='userRole' class="drowndown" >                        
+              <ul class="dropdown-menu dropdown-menu-right" :class="{show: roleView}" role="menu" aria-labelledby="userRole">
+                <li class='dropdown-item' v-for="(item, index) in listOptionsPerfil" :key='index' @click='actionRole(index)'>{{ item.dsc }}</li>
+              </ul>
+            </div> -->
+        <!-- </div> -->
 
       </div>
-
     </div> 
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -160,15 +157,19 @@ export default {
 
 <style scoped>
 .home {
-  width: 90%;
+  width: 99%;
   background-color: var(--background-menu) !important;
   color: var(-font-color);
   margin: 0.133rem;
   padding: 0.134rem;
-  height: 2.3rem;
+  height: 2rem;
   font-size: 1.1rem;
 }  
-
+.brand {
+  color: black;
+  font-size: 1.4rem;
+  text-decoration:none;
+}
 .icon_ctn {
   display: flex;
   align-items: center;

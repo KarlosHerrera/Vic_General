@@ -1,13 +1,13 @@
 //  Menu.vue
 <template>
-  <div class='menu'>
-    <div class='itmMenu' @click="action('/pliegomatrimonial')"><p>Pliego Matrimonial</p></div>
-    <div class='itmMenu'>Dispensa de Impedimentos</div>
-    <div class='itmMenu'>Licencia de Bautismo</div>
-    <div class='itmMenu'>Dispensa de Proclamas</div>
-    <div class='itmMenu'>Licencia de Traslado</div>
-    <div class='itmMenu'>Dispensa Partida Baut.</div>
-    <div class='itmMenu'>Medio Pliego</div>
+  <div class='menu d-flex flex-wrap justify-content-around'>
+    <div class='itmMenu' @click="action('/pliegomatrimonial')"><p>Pliego</p><p>Matrimonial</p></div>
+    <div class='itmMenu'><p class='align_center'>Dispensa de</p><p> Impedimentos</p></div>
+    <div class='itmMenu'><p>Licencia de</p><p>Bautismo</p></div>
+    <div class='itmMenu'><p>Dispensa de</p><p>Proclamas</p></div>
+    <div class='itmMenu'><p>Licencia de</P><p>Traslado</p></div>
+    <div class='itmMenu'><p>Dispensa Partida</p><p>de Bautizo</p></div>
+    <div class='itmMenu'><p>Medio Pliego</p></div>
   </div>
 </template> 
 
@@ -145,39 +145,37 @@ export default {
 
 <style scoped>
 .menu {
-  display: flex;
-  flex-direction: row;
-  /* justify-content: space-around; */
-  /* align-items: center;   */
-  width: 80%;
+  /* width: 90%; */
   margin: 0.133rem;
-  padding: 0.134rem;
-  height: 2.3rem;
+  padding: 0.133rem;
+  /* height: 2.3rem; */
   font-size: 1.1rem;
  
-}  
+}
 .itmMenu {
-  display: flex;
-  justify-content: center;
-  align-items: center;  
   background-color: var(--background-menu) !important;
+  font-size: 1.4rem;
   color: var(--font-color);
-  margin: 3rem 6rem;
-  font-size: 1.5rem;
-  width: 15rem;
-  height: 8rem;
+  width: 12rem;
+  height: 6rem;
+  margin: 2rem 4rem;
+  padding: 1.5rem;
   /* border: 1px solid gray; */
   box-shadow: 9px 7px 5px rgba(212, 211, 211, 0.77);
+    box-shadow: 9px 7px 5px rgba(185, 181, 181, 0.77);
 }
 .itmMenu:hover {
   cursor: pointer;
-  font-size: 1.55rem;
+  /* font-size: 1.55rem; */
   color: white;
-  width: 13.1rem;
-  height: 8.1rem;   
+  width: 12.1rem;
+  height: 6rem;   
+
   box-shadow: 9px 7px 5px rgba(185, 181, 181, 0.77);
 }
-
+div p {
+    text-align: center;
+}
 .nav-link {
   color: black !important;
   padding: 0.32rem 0.5rem !important;
