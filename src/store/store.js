@@ -18,11 +18,28 @@ let fechaHoy = new Date();
 //const store = new Vuex.Store({
 export default new Vuex.Store({
   state: {
-    User_Name: '',
-    User_Role: '',
+    User_Name: 'Bulo',
+    User_Role: 'Adminstrador',
     record: {},
     fechaHoy: fechaHoy,
-    host: host
+    host: host,
+
+    er_numeroExpediente: "^[0-9A-Z]{1}[a-zA-Z0-9 -.]{1,9}$",
+    er_fecha: "",
+    er_diocesis: "^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()]{1,99}$",
+    er_parroquia: "^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,99}$",
+    er_apellidosNombres: "^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,50}$",
+    er_direccion: `^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,99}$`,
+    er_vicario: "^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,49}$",
+    er_cabecera: "^[A-Z0-9]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,99}$",
+    er_observaciones: "^[A-Z0-9]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,99}$",
+    er_testigoParentesco: "^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,49}$",
+    er_diligencia: "^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,99}$",
+    er_razones: "^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,99}$",
+    er_procedimiento: "^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,99}$",
+    er_impedimento: "^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,49}$",
+    er_causal: "^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,99}$",
+
   },
   mutations: {
     setHost: function(state, data){

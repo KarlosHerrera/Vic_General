@@ -20,6 +20,14 @@ require('@/assets/js/index.js');
 Vue.filter('frmFecha', function(value){
   return moment(value).format('DD/MM/YYYY');
 });
+Vue.filter('frmLongMaxima', function(value, length){
+  if( !value ) value='';
+  if( value.trim().length > length ) {
+    return value.substring(0, length)+'...';
+  }else{
+    return value;
+  }
+});
 new Vue({
   store,
   router,  

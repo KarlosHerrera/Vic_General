@@ -1,4 +1,4 @@
-// religiososRouter.js
+// pliegomatrimonialCtrl.js
 const express = require('express');
 const router = express.Router();
 const conn = require('../assets/js/db_mysql.js');
@@ -8,9 +8,9 @@ moment.locale('es');
 
 // const currentUser = state.User_Name;
 router.get('/lastCode',  (req, res) => {
-    console.log('religiosos/lastCode');
+    console.log('pliegomatrimonial/lastCode');
  
-    let sql = "SELECT CAST(codReligioso AS UNSIGNED) AS codigo FROM religiosos ORDER BY codigo DESC LIMIT 1";
+    let sql = "SELECT CAST(numeroExpediente AS UNSIGNED) AS codigo FROM pliegomatrimonial ORDER BY codigo DESC LIMIT 1";
     conn.query(sql, function(err, rows){
         if(err){
             console.log('sqlMessage: ', err.sqlMessage);
@@ -21,7 +21,7 @@ router.get('/lastCode',  (req, res) => {
     });    
 });
 router.get('/', (req, res) => {
-    let sql = 'SELECT apellidosNombres, codcargo FROM religiosos';
+    let sql = 'SELECT apellidosNombres, codcargo FROM pliegomatrimonial';
     conn.query(sql, function(err, rows){
         if(err) throw err;
         // console.log('Type =', typeof(rows));
@@ -43,7 +43,10 @@ router.get('/', (req, res) => {
 // Get all documents
 router.get('/all', (req, res) => {
     console.log('pliegomatrimonial/all');
-    let sql = `SELECT * FROM pliegomatrimonial WHERE activo='S' ORDER BY numeroExpediente`;
+    let sql = `SELECT *,
+                  LEFT( CONCAT(apellidosNovia,', ',nombresNovia ), 70 ) AS Novia,
+                  LEFT( CONCAT(apellidosNovio,', ',nombresNovio ), 70 ) AS Novio
+                FROM pliegomatrimonial WHERE activo='S' ORDER BY numeroExpediente`;
     conn.query(sql, function(err, rows){
         if(err) throw err;
         res.status(200).json(rows);
@@ -51,26 +54,16 @@ router.get('/all', (req, res) => {
     });
 
 });
-router.get('/Religiosos_min', (req, res) => {
-    console.log('Religiosos/Religiosos_min');
+router.get('/pliegomatrimonial_min', (req, res) => {
+    console.log('pliegomatrimonial/pliegomatrimonial_min');
 
-    const sql = "SELECT codReligioso, apellidosNombres FROM religiosos WHERE activo = 'S' ORDER BY apellidosNombres";
+    const sql = "SELECT numeroExpediente, apellidosNombres FROM pliegomatrimonial WHERE activo = 'S' ORDER BY apellidosNombres";
     conn.query(sql, function(err, rows){
         if(err) throw err;
         res.status(200).json(rows);
         // res.send(rows);
         // conn.end();
     });
-});
-router.get('/all_rel', async (req, res) => {
-    console.log('religiosos/all_rel');
-
-    let sql ='CALL Religiosos_all_rel()';
-    conn.query(sql, function(err, rows){
-        if(err) console.log('err => ', err);
-        res.status(200).json(rows)[0];
-    });
-
 });
 // User verify 
 router.post('/id', async (req, res) => {
@@ -91,60 +84,59 @@ router.post('/id', async (req, res) => {
 
 // Create document
 router.post('/create', async (req, res) => {
-    console.log('/religiosos/create');
+    console.log('/pliegomatrimonial/create');
     // const {docLegalizacion, fechaDoc, codInstitucion, nombreInstitucion} = req.body;
     let data = req.body;
-    let codReligioso = data.codReligioso;
+    let numeroExpediente = data.numeroExpediente;
 
-    conn.query('INSERT INTO religiosos SET ?', [data], function(err, rows){
+    conn.query('INSERT INTO pliegomatrimonial SET ?', [data], function(err, rows){
         if(err){
             console.log('sqlMessage: ', err.sqlMessage);
             console.log('sql: ', err.sql);
-            res.json({status: false, msg: 'Unsucessfull', codReligioso: codReligioso, crud: 'create'});
+            res.json({status: false, msg: 'Unsucessfull', numeroExpediente: numeroExpediente, crud: 'create'});
         }else{
             console.log(rows);
-            res.json({status: true, msg: 'Sucessfull', codReligioso: codReligioso, crud: 'create'});
+            res.json({status: true, msg: 'Sucessfull', numeroExpediente: numeroExpediente, crud: 'create'});
         }
     })
 
 });
 // Update document
 router.put('/update', (req, res) => {
-    console.log('/religiosos/update');
+    console.log('/pliegomatrimonial/update');
     const data = req.body;
-    const codReligioso = data.codReligioso;
-    delete data.codReligioso;
+    const numeroExpediente = data.numeroExpediente;
+    delete data.numeroExpediente;
     data.modificado = moment(data.modificado).format('YYYY-MM-DD hh:mm:ss');
-    let sql = "UPDATE religiosos SET ? WHERE codReligioso = ?";
+    let sql = "UPDATE pliegomatrimonial SET ? WHERE numeroExpediente = ?";
     // console.log('Data =>', data);    
-    conn.query(sql, [data, codReligioso], function(err){
+    conn.query(sql, [data, numeroExpediente], function(err){
         if(err){
             console.log('sqlMessage: ', err.sqlMessage);
             console.log('sql: ', err.sql);
-            res.json({status: false, msg: 'Unsucessfull', codReligioso: codReligioso, crud: 'update'});
+            res.json({status: false, msg: 'Unsucessfull', numeroExpediente: numeroExpediente, crud: 'update'});
         }else{
-            res.json({status: true, msg: 'Sucessfull', codReligioso: codReligioso, crud: 'update'});
+            res.json({status: true, msg: 'Sucessfull', numeroExpediente: numeroExpediente, crud: 'update'});
         }
     }); 
 });
 
 // Delete one document
-// router.delete('/:id', (req, res) => {
 router.delete('/delete', async (req, res) => {
-    console.log('/religiosos/delete');
+    console.log('/pliegomatrimonial/delete');
     const data = req.body;
-    const codReligioso= data.codReligioso;
+    const numeroExpediente= data.numeroExpediente;
     data.activo = 'N'
     data.eliminado = moment(data.eliminado).format('YYYY-MM-DD hh:mm:ss');
     // let sql = 'DELETE FROM movimientoDocumento WHERE codInstitucion = ?';
-    let sql = "UPDATE religiosos SET ? WHERE codReligioso = ?";
-    conn.query(sql, [data, codReligioso], function(err){
+    let sql = "UPDATE pliegomatrimonial SET ? WHERE numeroExpediente = ?";
+    conn.query(sql, [data, numeroExpediente], function(err){
         if(err){
             console.log('sqlMessage: ', err.sqlMessage);
             console.log('sql: ', err.sql);
-            res.json({status: false, msg: 'Unsucessfull', codReligioso: codReligioso, crud: 'delete'});
+            res.json({status: false, msg: 'Unsucessfull', numeroExpediente: numeroExpediente, crud: 'delete'});
         }else{
-            res.json({status: true, msg: 'Sucessfull', codReligioso: codReligioso, crud: 'delete'});
+            res.json({status: true, msg: 'Sucessfull', numeroExpediente: numeroExpediente, crud: 'delete'});
         }
     }); 
 

@@ -39,6 +39,10 @@ input {
     border-color: ; */
     box-shadow: none;
 }
+.form-control:disabled {
+	/* background-color: rgb(216, 211, 211); */
+
+}
 /* End Boostrap  */
 
 /* form.js */
