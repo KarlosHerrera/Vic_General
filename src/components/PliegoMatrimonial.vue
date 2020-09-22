@@ -19,21 +19,25 @@
     <table class='table table-sm table-bordered table-hover table_1'>
       <thead class='rounded-top'>
         <tr>
+          <th>Consec.<span></span></th>
           <th>Expediente<span></span></th>
           <th class="align_center">Fecha<span></span></th>          
           <th>Novia<span></span></th>
           <th>Novio<span></span></th>
-          <th>Parroquia-Celebracion<span></span></th>
+          <th>Autorizacion<span></span></th>
+          <!-- <th>Parroquia-Celebracion<span></span></th> -->
           <th class='text-center'>Opciones</th>
         </tr>
       </thead>
       <tbody id='bodyTable' class='' >
         <tr v-for="(doc, index) in tmpListRec" :key='index' @dblclick='detalleItem(index)' @mouseover='itemFocus(index)' @blur='itemBlur'>
+          <td> {{ doc.idPMatrimonial}} </td>
           <td> {{ doc.numeroExpediente}} </td>
           <td class='align_center'> {{ doc.fechaExpediente | frmFecha }} </td>
           <td> {{ doc.Novia }} </td>
           <td> {{ doc.Novio }} </td>
-          <td> {{ doc.parroquiaCelebracion }} </td>
+          <!-- <td> {{ doc.parroquiaCelebracion }} </td> -->
+          <td> {{ doc.fechaAutizacion }} </td>
           <td class=' d-flex justify-content-center align-items-center'>
             <button class='btn btn-sm btn_actions btn_1' @click='updateItem(index)' :disabled="doc.activo=='N'" :class="{void_Btn: doc.activo=='N'}">Editar</button>
             <button class='btn btn-sm btn_actions btn_1' @click='deleteItem(index)' :disabled="doc.activo=='N'" :class="{void_Btn: doc.activo=='N'}">Anular</button>
@@ -48,7 +52,7 @@
       <form id='formExpediente' ref='formExpediente' class='formBase' onsubmit="return false;" novalidate autocomplete="nope" data-btnEnable='btnSave'>
           <div class="form-row">
               <div class="col-2 form-group">
-                  <label for="numeroExpediente" class="formControlLabel">Expediente*</label>
+                  <label for="numeroExpediente" class="formControlLabel">Pliego*</label>
                     <input type="text" name='numeroExpediente' v-model="rec.numeroExpediente" class="form-control form-control-sm" 
                       ref='numeroExpediente' placeholder="" required :disabled="disabledForm"
                       @input="input($event.target)" :pattern="er_numeroExpediente" autocomplete='off' data-upper='1c'>
@@ -72,7 +76,7 @@
 
           <div class="form-row">
               <div class="col-2 form-group">
-                <inputFecha></inputFecha>
+                <inputFecha v-model="rec.fecha" :disabled='disabledForm' @confirma_fecha="confirmaFecha"></inputFecha>
               </div>          
           </div>           
 
@@ -573,7 +577,10 @@ export default {
     filterProcess: function(value){
       // console.log('value = ', value);
       this.tmpListRec = value;
-    }    
+    },
+    confirmaFecha(){
+      console.log('confirmaFecha()');
+    }
   },
    // Hooks
   created: function(){

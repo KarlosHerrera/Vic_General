@@ -1,11 +1,11 @@
 //  Menu.vue
 <template>
   <div class='menu d-flex flex-wrap justify-content-around'>
-    <div class='itmMenu' @click="action('/pliegomatrimonial')"><p>Pliego</p><p>Matrimonial</p></div>
+    <div class='itmMenu' @click="action('/pliegomatrimonial')"><p>Pliego</p><p>Matrimonial</p><p>Nuevo</p></div>
     <div class='itmMenu'><p class='align_center'>Dispensa de</p><p> Impedimentos</p></div>
-    <div class='itmMenu'><p>Licencia de</p><p>Bautismo</p></div>
+    <div class='itmMenu'><p>Licencia de</p><p>Bautismo</p><p>de Adulto</p></div>
     <div class='itmMenu'><p>Dispensa de</p><p>Proclamas</p></div>
-    <div class='itmMenu'><p>Licencia de</P><p>Traslado</p></div>
+    <div class='itmMenu'><p>Licencia de</p><p>Traslado</p></div>
     <div class='itmMenu'><p>Dispensa Partida</p><p>de Bautizo</p></div>
     <div class='itmMenu'><p>Medio Pliego</p></div>
   </div>
@@ -156,10 +156,11 @@ export default {
   background-color: var(--background-menu) !important;
   font-size: 1.4rem;
   color: var(--font-color);
+  /* color: rgb(95, 127, 138); */
   width: 12rem;
-  height: 6rem;
+  height: 7rem;
   margin: 2rem 4rem;
-  padding: 1.5rem;
+  padding: 1.0rem;
   /* border: 1px solid gray; */
   box-shadow: 9px 7px 5px rgba(212, 211, 211, 0.77);
     box-shadow: 9px 7px 5px rgba(185, 181, 181, 0.77);
@@ -168,8 +169,9 @@ export default {
   cursor: pointer;
   /* font-size: 1.55rem; */
   color: white;
-  width: 12.1rem;
-  height: 6rem;   
+  /* color: black; */
+  /* width: 12.1rem;
+  height: 6rem;    */
 
   box-shadow: 9px 7px 5px rgba(185, 181, 181, 0.77);
 }

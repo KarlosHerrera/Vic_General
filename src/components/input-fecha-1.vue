@@ -1,6 +1,6 @@
 // input-fecha.vue
 <template>
-    <div class="fecha_contenedor form-control form-control-sm d-flex align-items-center"  @blur='exitFecha'>
+    <div class="fecha_contenedor form-control form-control-sm">
         <input ref='dia' name='dd' v-model='dd' type="text" minlength="2" maxlength="2" size='2' 
             @click="select($event.target)" @keyup="numDia($event.target)"
             class="dd fecha_input" autocomplete='off'><span class='barras'>/</span>
@@ -66,8 +66,8 @@ export default {
                 //     break; 
                 case 1:
                     if( parseInt(numero, 10) > 3 ){
-                        numValido = '0';
-                        // exit = true;
+                        numValido = '0'+numero;
+                        exit = true;
                     }else{
                         numValido = numero;
                     }
@@ -86,7 +86,6 @@ export default {
                     break;
                 default:
                     console.log('Dia, sin valor adecuado.')
-
             }          
             self.value = numValido;
             if( exit ) {
@@ -109,8 +108,8 @@ export default {
                 //     break; 
                 case 1:
                     if( parseInt(numero, 10) > 1 ){
-                        numValido = '1';
-                        // exit = true;
+                        numValido = '0'+numero;
+                        exit = true;
                     }else{
                         numValido = numero;
                     }
@@ -189,46 +188,42 @@ export default {
         },
         evalFecha(){
             console.log('evalFecha()');
-            let valido = true;
+            // let valido = true;
             let diaExpReg = new RegExp('^(?:3[01]|[12][0-9]|0?[1-9])$');
-            if ( !diaExpReg.test(this.dd)){
-                // this.select(this.$refs.dia)  && this.dd.length == 1 
-                console.log('dia!')
-                valido = false;
+            if ( !diaExpReg.test(this.dd) && this.dd.length == 1 ){
+                // this.select(this.$refs.dia)
+                return false;
             } 
             let mesExpReg = new RegExp('^(0?[1-9]|1[1-2])$');
             if (!mesExpReg.test(this.mm)) {
                 // this.select(this.$refs.mes)
-                 console.log('mes!')
-                valido = false;
+                return false;
             }            
             let anioExpReg = new RegExp('^[1-9]{1}[0-9]{3}$');
             if (!anioExpReg.test(this.aa)) {
                 // this.select(this.$refs.anio)
-                valido = false;
+                return false;
             } 
             console.log('=>', this.aa+'-'+this.mm+'-'+this.dd)
             let fecha = moment(this.aa+'-'+this.mm+'-'+this.dd);
             console.log('fecha => ', fecha)
             if(fecha.isValid){
                 console.log('fecha correcta')
-                valido = true;
+                return true;
             }else{
                 console.log('fecha incorrecta')
-                valido = false;
+                return false;
             }   
-            return valido;
         },
         exitFecha(){
             console.log('exitFecha()')
 
         }
     },
-    watch: {
+     watch: {
         fechaFinal: function(){
         //    this.$emit('filter_Process', value);
-            console.log('watch.fechaFinal()')
-           return this.aa+'-'+this.mm+'-'+this.dd;
+           return  this.aa+'-'+this.mm+'-'+this.dd
         }
     },
     mounted: function(){
@@ -253,7 +248,7 @@ export default {
     color: inherit;
     font-size: inherit;
     border: none;
-    padding: 0px 2px;
+    padding: 1px 2px;
 }
 .fecha_input:focus {
     background-color: rgb(0,120,215);
