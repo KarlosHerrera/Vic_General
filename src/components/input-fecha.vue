@@ -37,6 +37,7 @@ export default {
             dd: 'dd',
             mm: 'mm',
             aa: 'aaaa',
+            new: ''
         }
     },    
     methods: {
