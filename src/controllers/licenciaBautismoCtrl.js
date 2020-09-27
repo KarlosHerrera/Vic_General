@@ -1,4 +1,4 @@
-// pliegomatrimonialCtrl.js
+// licenciaBaustismoCtrl.js
 const express = require('express');
 const router = express.Router();
 const conn = require('../assets/js/db_mysql.js');
@@ -6,33 +6,12 @@ const conn = require('../assets/js/db_mysql.js');
 const  moment =require('moment');
 moment.locale('es');
 
-router.get('/', (req, res) => {
-    let sql = 'SELECT apellidosNombres, codcargo FROM pliegomatrimonial';
-    conn.query(sql, function(err, rows){
-        if(err) throw err;
-        // console.log('Type =', typeof(rows));
-        // let filas = res.json(rows);
-        // console.log('filas ===================================> ', filas);
-        for( let i =0; i < rows.length ; i++ ){
-            // console.log(i, rows[i].apellidosNombres);
-        }
-        res.status(500).json(rows);
-        // con.end();
-        //res.status(500).json([]);
-        // res.status(200).json({ status: true, msg: 'Successfull'});
-    });    
-    // res.json({
-    //     status: 'ok',
-    //     crud: 'read all'
-    // });
-});
 // Get all documents
 router.get('/all', (req, res) => {
-    console.log('pliegomatrimonial/all');
+    console.log('licenciabautismo/all');
     let sql = `SELECT *,
-                  LEFT( CONCAT(apellidosNovia,', ',nombresNovia ), 70 ) AS Novia,
-                  LEFT( CONCAT(apellidosNovio,', ',nombresNovio ), 70 ) AS Novio
-                FROM pliegomatrimonial ORDER BY idPMatrimonial`;
+                  LEFT( CONCAT(apellidos,', ',nombres ), 70 ) AS Bautizado,
+                FROM licenciabautismo ORDER BY idLicenciaBautismo`;
     conn.query(sql, function(err, rows){
         if(err) throw err;
         res.status(200).json(rows);
@@ -40,10 +19,10 @@ router.get('/all', (req, res) => {
     });
 
 });
-router.get('/pliegomatrimonial_min', (req, res) => {
-    console.log('pliegomatrimonial/pliegomatrimonial_min');
+router.get('/licenciabautismo_min', (req, res) => {
+    console.log('licenciabautismo/licenciabautismo_min');
 
-    const sql = "SELECT numeroExpediente, apellidosNombres FROM pliegomatrimonial WHERE activo = 'S' ORDER BY apellidosNombres";
+    const sql = "SELECT numeroExpediente, apellidosNombres FROM licenciabautismo WHERE activo = 'S' ORDER BY apellidosNombres";
     conn.query(sql, function(err, rows){
         if(err) throw err;
         res.status(200).json(rows);
@@ -70,12 +49,12 @@ router.post('/id', async (req, res) => {
 
 // Create document
 router.post('/create', async (req, res) => {
-    console.log('/pliegomatrimonial/create');
+    console.log('/licenciabautismo/create');
     // const {docLegalizacion, fechaDoc, codInstitucion, nombreInstitucion} = req.body;
     let data = req.body;
     let numeroExpediente = data.numeroExpediente;
 
-    conn.query('INSERT INTO pliegomatrimonial SET ?', [data], function(err, rows){
+    conn.query('INSERT INTO licenciabautismo SET ?', [data], function(err, rows){
         if(err){
             console.log('sqlMessage: ', err.sqlMessage);
             console.log('sql: ', err.sql);
@@ -89,13 +68,12 @@ router.post('/create', async (req, res) => {
 });
 // Update document
 router.put('/update', (req, res) => {
-    console.log('/pliegomatrimonial/update');
+    console.log('/licenciabautismo/update');
     const data = req.body;
-    const numeroExpediente = data.idPMatrimonial;
-    delete data.idPMatrimonial;
+    const numeroExpediente = data.idLicenciaBautismo;
+    delete data.idlLicenciaBautismo;
     data.modificado = moment(data.modificado).format('YYYY-MM-DD hh:mm:ss');
-    let sql = "UPDATE pliegomatrimonial SET ? WHERE idPMatrimonial = ?";
-    // console.log('Data =>', data);    
+    let sql = "UPDATE licenciabautismo SET ? WHERE idLicenciaBautismo = ?";  
     conn.query(sql, [data, numeroExpediente], function(err){
         if(err){
             console.log('sqlMessage: ', err.sqlMessage);
@@ -109,14 +87,14 @@ router.put('/update', (req, res) => {
 
 // Delete one document
 router.delete('/delete', async (req, res) => {
-    console.log('/pliegomatrimonial/delete');
+    console.log('/licenciabautismo/delete');
     let data = req.body;
-    let numeroExpediente= data.idPMatrimonial;
+    let numeroExpediente= data.idLicenciaBautismo;
     let eliminado = moment(data.eliminado).format('YYYY-MM-DD hh:mm:ss');
-    let eliminiado_usuario = data.eliminado_usuario;
+    let eliminado_usuario = data.eliminado_usuario;
     // let sql = 'DELETE FROM movimientoDocumento WHERE codInstitucion = ?';
-    let sql = "UPDATE pliegomatrimonial SET activo = ?, eliminado = ?, eliminado_usuario = ? WHERE idPMatrimonial = ?";
-    conn.query(sql, ['N',eliminado,eliminiado_usuario,numeroExpediente], function(err){
+    let sql = "UPDATE licenciabautismo SET activo = ?, eliminado = ?, eliminado_usuario = ? WHERE idLicenciaBautismo = ?";
+    conn.query(sql, ['N',eliminado,eliminado_usuario,numeroExpediente], function(err){
         if(err){ 
             console.log('sqlMessage: ', err.sqlMessage);
             console.log('sql: ', err.sql);

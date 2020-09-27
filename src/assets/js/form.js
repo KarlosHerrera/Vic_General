@@ -1,6 +1,8 @@
 //  form.js
 
 'use strict';
+import moment from 'moment';
+moment.locale('es');
 
 export function evalInput(obj){
 	// console.log('evalua(name= '+obj.name+'){...}');
@@ -70,7 +72,7 @@ export function evalValue(id){
 	// console.log(`evalValue(${id})`);
 	if( !id || id == null || !typeof(Id) == 'string') return false;	
 	let obj = document.getElementById(id);
-	if( !obj ) return false;
+	if( !obj ) {console.log(`Error: id = ${ id }`); return false;}
 	let sValor = obj.value;
 	let sPatron = obj.getAttribute("pattern");
 	let sRequerido = obj.getAttribute("required");
@@ -95,6 +97,15 @@ export function evalString(value){
 // function evalStrings(){
 // 	return true;
 // }
+export function evalDate(value){
+	// console.log(`evalDate(${value})`);
+	if( !value || value == null ) return false;
+	if( typeof(value) != 'string' || value.trim() == '' ) return false;
+	if( value.length != 10 ) return false;
+	let fecha = moment(value);
+	// console.log('Fecha: ', fecha)
+	return ( fecha.isValid() )? true: false;
+}
 export function evalNumber(value){
 	// console.log(`evalNumber(${value})`);
 	if( !value || value == null || !typeof(value) == 'number') return false;

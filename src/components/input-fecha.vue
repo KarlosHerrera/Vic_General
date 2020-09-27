@@ -1,22 +1,29 @@
 // input-fecha.vue
 <template>
-    <div class="fecha_contenedor form-control form-control-sm d-flex align-items-center"  @blur='exitFecha'>
-        <input ref='dia' name='dd' v-model='dd' type="text" minlength="2" maxlength="2" size='2' 
-            @click="select($event.target)" @keyup="numDia($event.target)"
-            class="dd fecha_input" autocomplete='off'><span class='barras'>/</span>
+    <div class="fecha_contenedor form-control form-control-sm d-flex align-items-center" :class="{'deshabilita': habilita}"  @blur='exitComponent'>
+        <!-- <label class="formControlLabel">{{ label }}</label> -->
+        <input ref='dia' v-model='dd' type="text" minlength="2" maxlength="2" size='2' :disabled='habilita'
+            @click="select($event.target)" @keyup="numDia($event.target)" @blur='diaBlur' @keyup.delete='borraFecha'
+            class="dd fecha_input" :class="{'colorError': dd_invalido}" autocomplete='off'>
+            <span class='barras' :class="{'deshabilita': habilita}">/</span>
 
-        <input ref='mes' name='mm' v-model='mm' type="text" minlength="2" maxlength="2" size='2'
-             @click="select($event.target)" @keyup="numMes($event.target)"
-            class="mm fecha_input" autocomplete='off'
-            ><span  class='barras' >/</span>
+        <input ref='mes' v-model='mm' type="text" minlength="2" maxlength="2" size='2' :disabled='habilita'
+             @click="select($event.target)" @keyup="numMes($event.target)" @blur='mesBlur' @keyup.delete='borraFecha'
+            class="mm fecha_input" autocomplete='off' >
+            <span class='barras' :class="{'deshabilita': habilita}">/</span>
 
-        <input ref='anio' name='aa' v-model='aa' type="text"  minlength="4" maxlength="4" size='4'
-            @click="select($event.target)" @keyup="numAnio($event.target)" @blur='exitFecha'
+        <input ref='anio' v-model='aa' type="text"  minlength="4" maxlength="4" size='4' :disabled='habilita'
+            @click="select($event.target)" @keyup="numAnio($event.target)" @keyup.delete='borraFecha'
             class="aa fecha_input" autocomplete='off'>
+
     </div>
     <!-- dia   ^(?:3[01]|[12][0-9]|0?[1-9])$    -->
     <!-- mes   ^(0?[1-9]|1[1-2])$     -->
     <!-- ano   ^[1-9]{1}\d{3}$   -->
+        <!-- <input ref='dia' name='dd' v-model='dd' type="text" minlength="2" maxlength="2" size='2' 
+            @click="select($event.target)" @keyup="numDia($event.target)" @blur='diaBlur' 
+            class="dd fecha_input" autocomplete='off'><span class='barras'>/</span>     
+        -->
 </template>
 
 <script>
@@ -27,25 +34,48 @@ moment.locale('es');
 
 export default {
     name: 'input-fecha',
-    props: {
-        // formato: YYYY-MM-DD
-        fecha: { type: String, default: '' },
-        msg: String
-    },
+    props: ['value','label','habilita'],
     data(){
         return {
             dd: 'dd',
             mm: 'mm',
             aa: 'aaaa',
-            new: ''
+            dd_invalido: false,
+            mm_invalido: false,
+            aa_invalido: false,
         }
-    },    
+    }, 
+    computed: {
+        fechaRetorno: function(){
+            return this.aa+'-'+this.mm+'-'+this.dd;
+        },
+        // habilita: function(){
+        //     return this.disabled
+        // }
+
+    },
     methods: {
         setComponent(){
             console.log('setComponent()')
             // this.$refs.dia.focus();
             // this.$refs.dia.select();
-            console.log('Fecha: ', this.fecha)
+            // console.log('value: ', this.value)
+            // this.fecha = $attrs.value;
+            console.log('setComponent().this.value > ', this.value)
+            // console.log('setComponent().this.label => ', this.label)
+
+            if( this.value != '' ){
+                let tmpFecha = moment(this.value);
+                if( tmpFecha.isValid() ){
+                    // console.log('valido...')
+                    this.dd= moment(tmpFecha).format('DD');
+                    this.mm= moment(tmpFecha).format('MM');
+                    this.aa= moment(tmpFecha).format('YYYY');
+                }else{
+                    console.log('<input-fecha>Fecha incorrecta!')
+                }                 
+            }
+
         },
         select(self){
             // console.log(`click(${self})`)
@@ -56,6 +86,7 @@ export default {
             // console.log(`numDia(${self})`)
             let numValido = '';
             let exit = false;
+            this.dd_invalido = false
             let numero = self.value;
             for (let i=0; i < numero.length; i++) {
                 if ('1234567890'.indexOf(numero.charAt(i)) != -1) numValido += numero.charAt(i);
@@ -76,6 +107,7 @@ export default {
                 case 2:
                     if( parseInt(numero, 10) > 31 ) {
                         numValido = '31';
+                        exit = true;
                     }else{
                         if ( numero == '00' ){
                             numValido = 'dd'
@@ -91,9 +123,19 @@ export default {
             }          
             self.value = numValido;
             if( exit ) {
-                this.evalFecha();   
-                this.select(this.$refs.mes)      
+                // this.evalFecha();   
+                this.select(this.$refs.mes)
+                this.dd_invalido = false;
             }
+        },
+        diaBlur(){
+            // console.log('Dia-Perdiendo el foco')
+            // let diaExpReg = new RegExp('^(?:3[01]|[12][0-9]|0?[1-9])$');
+            // let dia = this.dd;
+            // if ( !(diaExpReg.test(this.dia) && dia.length == 2 && this.evalFecha()) ){
+            //     this.$refs.dia.focus();
+            // }
+            this.$refs.mes.focus();
         },
         numMes(self){
             // console.log(`numMes(${self})`)
@@ -140,6 +182,17 @@ export default {
                 this.select(this.$refs.anio)      
             }            
         },
+        mesBlur(){
+            // console.log('Mes-Perdiendo el foco')
+            // let mesExpReg = new RegExp('^(0?[1-9]|1[1-2])$');
+            // if (!mesExpReg.test(this.mm)) {
+            //     // this.select(this.$refs.mes)
+            //      console.log('mes!')
+            //     valido = false;
+            // }           
+            /////// Si presiona tab, salir de la fecha 
+            this.$refs.anio.focus();
+        },
         numAnio(self){
             // console.log(`numAnio(${self})`)
             let exit = false;
@@ -176,9 +229,25 @@ export default {
             }  
             self.value = numValido;
             if( exit ) {
-                this.evalFecha();
+                if( !this.evalFecha() ){
+                   this.$refs.anio.focus();  
+                }
                 // this.select(this.$refs.mes)
             }   
+        },
+        mesAnio(){
+            // console.log('Mes-Perdiendo el foco')
+            // let mesExpReg = new RegExp('^(0?[1-9]|1[1-2])$');
+            // if (!mesExpReg.test(this.mm)) {
+            //     // this.select(this.$refs.mes)
+            //      console.log('mes!')
+            //     valido = false;
+            // }           
+            /////// Si presiona tab, salir de la fecha 
+            // this.$refs.anio.focus();
+            if( !this.evalFecha() ){
+                this.$refs.anio.focus();  
+            }
         },        
         evalNumero(numero){
             console.log(`evalNumero(${numero})`)            
@@ -191,38 +260,51 @@ export default {
         evalFecha(){
             console.log('evalFecha()');
             let valido = true;
-            let diaExpReg = new RegExp('^(?:3[01]|[12][0-9]|0?[1-9])$');
-            if ( !diaExpReg.test(this.dd)){
-                // this.select(this.$refs.dia)  && this.dd.length == 1 
-                console.log('dia!')
-                valido = false;
-            } 
-            let mesExpReg = new RegExp('^(0?[1-9]|1[1-2])$');
-            if (!mesExpReg.test(this.mm)) {
-                // this.select(this.$refs.mes)
-                 console.log('mes!')
-                valido = false;
-            }            
-            let anioExpReg = new RegExp('^[1-9]{1}[0-9]{3}$');
-            if (!anioExpReg.test(this.aa)) {
-                // this.select(this.$refs.anio)
-                valido = false;
-            } 
-            console.log('=>', this.aa+'-'+this.mm+'-'+this.dd)
+
+            // let anioExpReg = new RegExp('^[1-9]{1}[0-9]{3}$');
+            // if (!anioExpReg.test(this.aa)) {
+            //     // this.select(this.$refs.anio)
+            //     valido = false;
+            // } 
+            // console.log('=>', this.aa+'-'+this.mm+'-'+this.dd)
+            if( this.aa.trim()=='' && this.mm.trim()=='' && this.anio.trim()=='' ){
+                this.dd = 'dd';
+                this.mm = 'mm';
+                this.aa = 'aaaa';
+                this.$emit('input', undefined);                               
+            }
             let fecha = moment(this.aa+'-'+this.mm+'-'+this.dd);
-            console.log('fecha => ', fecha)
-            if(fecha.isValid){
-                console.log('fecha correcta')
+            // console.log('fecha => ', fecha)
+            if( fecha.isValid() ){
+                // console.log('fecha correcta')
+                // this.$emit('confirma_fecha', this.aa+'-'+this.mm+'-'+this.dd );  
+                this.$emit('input', this.aa+'-'+this.mm+'-'+this.dd );       
+                // this.$emit('input',$event.target.value)         
                 valido = true;
             }else{
                 console.log('fecha incorrecta')
+                this.dd_invalido = true,
+                this.mm_invalido = true,
+                this.aa_invalido = true, 
                 valido = false;
             }   
             return valido;
         },
+        borraFecha(e){
+            // console.log(`borraFecha(${e.key})`)
+            if (e.key == 46) {  // delete
+                this.dd = 'dd';
+                this.mm = 'mm';
+                this.aa = 'aaaa';
+                this.$emit('input', undefined); 
+            }
+        },
         exitFecha(){
             console.log('exitFecha()')
 
+        },
+        exitComponent(){
+            console.log('exitComponent()')            
         }
     },
     watch: {
@@ -231,6 +313,15 @@ export default {
             console.log('watch.fechaFinal()')
            return this.aa+'-'+this.mm+'-'+this.dd;
         }
+    },
+    created() {
+        // window.addEventListener('keydown', (e) => {
+        //     console.log('tecla presionada: ', e.key);
+        //     // if (e.key == 'F4') {
+        //     //     alert("funciona!");
+        //     //     this.showModal = !this.showModal;
+        //     // }
+        // })
     },
     mounted: function(){
         this.setComponent();
@@ -276,5 +367,8 @@ text-align: left;
     background-color: white;
     /* background-color: orange; */
     font-size: inherit;
+}
+.deshabilita {
+    background-color: rgb(245, 245, 245);
 }
 </style>

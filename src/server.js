@@ -13,6 +13,8 @@ const app = express();
 
 // Controladores
 const pliegomatrimonialCtrl = require('./controllers/pliegoMatrimonialCtrl');
+const licenciatrasladoCtrl = require('./controllers/licenciaTrasladoCtrl');
+const dispensabautismalCtrl = require('./controllers/dispensaBautismalCtrl');
 
 app.set('port', process.env.PORT || 3001);  // Configuracion de puerto (variables globales)
 
@@ -28,6 +30,8 @@ app.use(express.static(path.join(__dirname, './public')));
 
 // Server routers-controllers
 app.use('/pliegomatrimonial', pliegomatrimonialCtrl);
+app.use('/licenciatraslado', licenciatrasladoCtrl);
+app.use('/dispensabautismal', dispensabautismalCtrl);
 
 
 // Settings

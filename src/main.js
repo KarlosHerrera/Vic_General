@@ -5,6 +5,7 @@ import store from './store/store.js';
 
 import "bootstrap/dist/css/bootstrap.min.css"
 import filtratabla from '@/components/filtra-tabla.vue';
+import inputFecha from '@/components/input-fecha.vue';
 
 import moment from 'moment';
 moment.locale('es');
@@ -12,6 +13,7 @@ Vue.config.productionTip = false
 
 
 Vue.component('filtra-tabla', filtratabla);
+Vue.component('input-fecha', inputFecha);
 
 require('@/assets/css/index.css');
 require('@/assets/js/index.js');

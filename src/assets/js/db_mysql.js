@@ -19,7 +19,8 @@ var pool = mysql.createPool({
     host: db.host,
     user: db.user,
     password: db.password,
-    database: db.database
+    database: db.database,
+    dateStrings: true
 });
 
 module.exports = pool;

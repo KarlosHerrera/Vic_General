@@ -3,11 +3,11 @@
   <div class='menu d-flex flex-wrap justify-content-around'>
     <div class='itmMenu' @click="action('/pliegomatrimonial')"><p>Pliego</p><p>Matrimonial</p><p>Nuevo</p></div>
     <div class='itmMenu'><p class='align_center'>Dispensa de</p><p> Impedimentos</p></div>
-    <div class='itmMenu'><p>Licencia de</p><p>Bautismo</p><p>de Adulto</p></div>
+    <div class='itmMenu' @click="action('/licenciabautismo')"><p>Licencia de</p><p>Bautismo</p><p>de Adulto</p></div>
     <div class='itmMenu'><p>Dispensa de</p><p>Proclamas</p></div>
-    <div class='itmMenu'><p>Licencia de</p><p>Traslado</p></div>
-    <div class='itmMenu'><p>Dispensa Partida</p><p>de Bautizo</p></div>
-    <div class='itmMenu'><p>Medio Pliego</p></div>
+    <div class='itmMenu' @click="action('/licenciatraslado')"><p>Licencia de</p><p>Traslado</p></div>
+    <div class='itmMenu' @click="action('/licenciatraslado')"><p class='align_center'>Dispensa de</p><p> Partida Bautismal</p></div>
+    <div class='itmMenu'><p>Medio Pliego</p><p>Matrimonial</p></div>
   </div>
 </template> 
 

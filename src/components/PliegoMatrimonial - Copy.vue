@@ -52,26 +52,40 @@
       <form id='formExpediente' ref='formExpediente' class='formBase' onsubmit="return false;" novalidate autocomplete="nope" data-btnEnable='btnSave'>
           <div class="form-row">
               <div class="col-2 form-group">
-                <label for="numeroExpediente" class="formControlLabel">Pliego*</label>
-                <input type="text" name='numeroExpediente' v-model="rec.numeroExpediente" class="form-control form-control-sm" 
-                  ref='numeroExpediente' id='numeroExpediente' required :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_numeroExpediente" autocomplete='off' data-upper='1c'>
-                <small id="" class="form-text text-muted"></small>
+                  <label for="numeroExpediente" class="formControlLabel">Pliego*</label>
+                    <input type="text" name='numeroExpediente' v-model="rec.numeroExpediente" class="form-control form-control-sm" 
+                      ref='numeroExpediente' id='numeroExpediente' required :disabled="disabledForm"
+                      @input="input($event.target)" :pattern="er_numeroExpediente" autocomplete='off' data-upper='1c'>
+                  <small id="" class="form-text text-muted"></small>
               </div>  
+              <!-- <div class="col-2 form-group">
+                  <label for="fechaExpediente" class="formControlLabel">Fecha*</label>
+                    <input type="date" name='fechaExpediente' v-model="rec.fechaExpediente" class="form-control form-control-sm" 
+                      ref='fechaExpediente' id='fechaExpediente' required :disabled="disabledForm"
+                      @input="input($event.target)" pattern="" autocomplete='off'>
+                  <small id="" class="form-text text-muted"></small>
+              </div> -->
               <div class="col-2 form-group">
-                <label for="fechaExpediente" class="formControlLabel">Fecha*</label>
+                  <label for="fechaExpediente" class="formControlLabel">Fecha*</label>
                 <input-fecha v-model="rec.fechaExpediente" :habilita='disabledForm' :disabled='disabledForm' ></input-fecha>
                 <!-- @confirma_fecha="confirmaFecha($event, $event.target)"> -->
                 <!-- @input="rec.fechaExpediente = $event.target.value" -->
               </div>              
               <div class="col-8 form-group">
-                <label for="diocesisOrigen" class="formControlLabel">Diocesis-Origen*</label>
-                  <input type="text" name='diocesisOrigen' v-model="rec.diocesisOrigen" class="form-control form-control-sm" 
-                    ref='diocesisOrigen' id='diocesisOrigen' required :disabled="disabledForm"
-                    @input="input($event.target)" :pattern="er_diocesis" autocomplete='off' data-upper='1c'>
-                <small id="" class="form-text text-muted"></small>
+                  <label for="diocesisOrigen" class="formControlLabel">Diocesis-Origen*</label>
+                    <input type="text" name='diocesisOrigen' v-model="rec.diocesisOrigen" class="form-control form-control-sm" 
+                      ref='diocesisOrigen' id='diocesisOrigen' required :disabled="disabledForm"
+                      @input="input($event.target)" :pattern="er_diocesis" autocomplete='off' data-upper='1c'>
+                  <small id="" class="form-text text-muted"></small>
               </div> 
           </div>  
+          <!-- <div class="form-row">
+              <div class="col-2 form-group">
+                 <label for="fechaExpediente" class="formControlLabel">Fecha.....</label>
+                <input-fecha v-model="rec.fecha" label='Fecha...' :disabled='disabledForm'  @confirma_fecha="confirmaFecha($event, $event.target)"></input-fecha>
+              </div>          
+          </div>            -->
+
           <div class="form-row">
               <div class="col-8 form-group">
                   <label for="parroquiaCelebracion" class="formControlLabel">Parroquia-Celebracion*</label>
@@ -81,29 +95,43 @@
                   <small id="" class="form-text text-muted"></small>
               </div>  
               <div class="col-2 form-group">
-                <label for="fechaMatCivil" class="formControlLabel">Matrimonio-Civil</label>
+                  <label for="matrimonioCivil" class="formControlLabel">Matrimonio-Civil</label>
                 <input-fecha v-model="rec.fechaMatCivil" :habilita='disabledForm'></input-fecha>
               </div>                 
+              <!-- <div class="col-2 form-group">
+                  <label for="matrimonioCivil" class="formControlLabel">Matrimonio-Civil</label>
+                    <input type="date" name='fechaMatCivil' v-model="rec.fechaMatCivil" class="form-control form-control-sm" 
+                      ref='fechaMatCivil' id='fechaMatCivil' :disabled="disabledForm"
+                      @input="input($event.target)" pattern="" autocomplete='off'>
+                  <small id="" class="form-text text-muted"></small>
+              </div>  -->
               <div class="col-2 form-group">
-                <label for="fechaMatReligioso" class="formControlLabel">Matrimonio-Religioso</label>
+                  <label for="fechaMatReligioso" class="formControlLabel">Matrimonio-Religioso</label>
                 <input-fecha v-model="rec.fechaMatReligioso" :habilita='disabledForm'></input-fecha>
               </div>                
+              <!-- <div class="col-2 form-group">
+                  <label for="fechaMatReligioso" class="formControlLabel">Matrimonio-Religioso</label>
+                    <input type="date" name='fechaMatReligioso' v-model="rec.fechaMatReligioso" class="form-control form-control-sm" 
+                      ref='fechaMatReligioso' id='fechaMatReligioso' :disabled="disabledForm"
+                      @input="input($event.target)" pattern="" autocomplete='off'>
+                  <small id="" class="form-text text-muted"></small>
+              </div>                      -->
           </div>  
           <hr class='separacion'>
           <div class="form-row">
             <div class="col-6 form-group">
-              <label for="apellidosNovio" class="formControlLabel">Apellidos-Novio*</label>
-                <input type="text" name='apellidosNovia' v-model="rec.apellidosNovio" class="form-control form-control-sm" 
-                  ref='apellidosNovio' id='apellidosNovio' required :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_apellidosNombres" autocomplete='off' data-upper='1c'>
-              <small id="" class="form-text text-muted"></small>
+                <label for="apellidosNovio" class="formControlLabel">Apellidos-Novio*</label>
+                  <input type="text" name='apellidosNovia' v-model="rec.apellidosNovio" class="form-control form-control-sm" 
+                    ref='apellidosNovio' id='apellidosNovio' required :disabled="disabledForm"
+                    @input="input($event.target)" :pattern="er_apellidosNombres" autocomplete='off' data-upper='1c'>
+                <small id="" class="form-text text-muted"></small>
             </div> 
             <div class="col-6 form-group">
-              <label for="nombresNovio" class="formControlLabel">Nombres-Novio*</label>
-                <input type="text" name='nombresNovia' v-model="rec.nombresNovio" class="form-control form-control-sm" 
-                  ref='nombresNovio'  id='nombresNovio' required :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_apellidosNombres" autocomplete='off' data-upper='1c'>
-              <small id="" class="form-text text-muted"></small>
+                <label for="nombresNovio" class="formControlLabel">Nombres-Novio*</label>
+                  <input type="text" name='nombresNovia' v-model="rec.nombresNovio" class="form-control form-control-sm" 
+                    ref='nombresNovio'  id='nombresNovio' required :disabled="disabledForm"
+                    @input="input($event.target)" :pattern="er_apellidosNombres" autocomplete='off' data-upper='1c'>
+                <small id="" class="form-text text-muted"></small>
             </div>                        
           </div>  
           <div class="form-row">
@@ -111,143 +139,161 @@
               <label for="fechaBauNovio" class="formControlLabel">Bautiso-Novio*</label>
               <input-fecha v-model="rec.fechaBauNovio" :habilita='disabledForm'></input-fecha>
             </div>            
-            <div class="col-10 form-group">
-              <label for="parroquiaBauNovio" class="formControlLabel">Parroquia Bautiso-Novio*</label>
-                <input type="text" name='parroquiaBauNovio' v-model="rec.parroquiaBauNovio" class="form-control form-control-sm" 
-                  ref='parroquiaBauNovio' id='parroquiaBauNovio' required :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_parroquia" autocomplete='off' data-upper='1c'>
-              <small id="" class="form-text text-muted"></small>
-            </div>                                     
+             <!-- <div class="col-2 form-group">
+                  <label for="fechaBauNovio" class="formControlLabel">Bautiso-Novio*</label>
+                    <input type="date" name='rec.fechaBauNovio' v-model="rec.fechaBauNovio" class="form-control form-control-sm" 
+                      ref='fechaBauNovio' required :disabled="disabledForm"
+                      @input="input($event.target)" pattern="" autocomplete='off' data-upper='1c'>
+                  <small id="" class="form-text text-muted"></small>
+              </div> -->
+              <div class="col-10 form-group">
+                  <label for="parroquiaBauNovio" class="formControlLabel">Parroquia Bautiso-Novio*</label>
+                    <input type="text" name='parroquiaBauNovio' v-model="rec.parroquiaBauNovio" class="form-control form-control-sm" 
+                      ref='parroquiaBauNovio' id='parroquiaBauNovio' required :disabled="disabledForm"
+                      @input="input($event.target)" :pattern="er_parroquia" autocomplete='off' data-upper='1c'>
+                  <small id="" class="form-text text-muted"></small>
+              </div>                                     
           </div>       
           <div class="form-row">
-            <div class="col-12 form-group">
-              <label for="direccionNovio" class="formControlLabel">Direccion-Novio</label>
-                <input type="text" name='direccionNovio' v-model="rec.direccionNovio" class="form-control form-control-sm" 
-                  ref='direccionNovio' id='direccionNovio' :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_direccion" autocomplete='off' data-upper='1c'>
-              <small id="" class="form-text text-muted"></small>
-            </div>          
+              <div class="col-12 form-group">
+                  <label for="direccionNovio" class="formControlLabel">Direccion-Novio</label>
+                    <input type="text" name='direccionNovio' v-model="rec.direccionNovio" class="form-control form-control-sm" 
+                      ref='direccionNovio' id='direccionNovio' :disabled="disabledForm"
+                      @input="input($event.target)" :pattern="er_direccion" autocomplete='off' data-upper='1c'>
+                  <small id="" class="form-text text-muted"></small>
+              </div>          
           </div> 
           <div class="form-row">
-            <div class="col-6 form-group">
-              <label for="padreNovio" class="formControlLabel">Padre-Novio*</label>
-                <input type="text" name='padreNovia' v-model="rec.padreNovio" class="form-control form-control-sm" 
-                  ref='padreNovio' id='padreNovio' required :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_apellidosNombres" autocomplete='off' data-upper='1c'>
-              <small id="" class="form-text text-muted"></small>
-            </div> 
-            <div class="col-6 form-group">
-              <label for="madreNovio" class="formControlLabel">Madre-Novio*</label>
-                <input type="text" name='madreNovia' v-model="rec.madreNovio" class="form-control form-control-sm" 
-                  ref='madreNovio' id='madreNovio' required :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_apellidosNombres" autocomplete='off' data-upper='1c'>
-              <small id="" class="form-text text-muted"></small>
-            </div>                        
+              <div class="col-6 form-group">
+                  <label for="padreNovio" class="formControlLabel">Padre-Novio*</label>
+                    <input type="text" name='padreNovia' v-model="rec.padreNovio" class="form-control form-control-sm" 
+                      ref='padreNovio' id='padreNovio' required :disabled="disabledForm"
+                      @input="input($event.target)" :pattern="er_apellidosNombres" autocomplete='off' data-upper='1c'>
+                  <small id="" class="form-text text-muted"></small>
+              </div> 
+              <div class="col-6 form-group">
+                  <label for="madreNovio" class="formControlLabel">Madre-Novio*</label>
+                    <input type="text" name='madreNovia' v-model="rec.madreNovio" class="form-control form-control-sm" 
+                      ref='madreNovio' id='madreNovio' required :disabled="disabledForm"
+                      @input="input($event.target)" :pattern="er_apellidosNombres" autocomplete='off' data-upper='1c'>
+                  <small id="" class="form-text text-muted"></small>
+              </div>                        
           </div>
           <hr class='separacion'>
           <div class="form-row">
-            <div class="col-6 form-group">
-              <label for="apellidosNovia" class="formControlLabel">Apellidos-Novia*</label>
-                <input type="text" name='apellidosNovia' v-model="rec.apellidosNovia" class="form-control form-control-sm" 
-                  ref='apellidosNovia' id='apellidosNovia' required :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_apellidosNombres" autocomplete='off' data-upper='1c'>
-              <small id="" class="form-text text-muted"></small>
-            </div> 
-            <div class="col-6 form-group">
-              <label for="nombresNovia" class="formControlLabel">Nombres-Novia*</label>
-                <input type="text" name='nombresNovia' v-model="rec.nombresNovia" class="form-control form-control-sm" 
-                  ref='nombresNovia' id='nombresNovia' required :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_apellidosNombres" autocomplete='off' data-upper='1c'>
-              <small id="" class="form-text text-muted"></small>
-            </div>                        
+              <div class="col-6 form-group">
+                  <label for="apellidosNovia" class="formControlLabel">Apellidos-Novia*</label>
+                    <input type="text" name='apellidosNovia' v-model="rec.apellidosNovia" class="form-control form-control-sm" 
+                      ref='apellidosNovia' id='apellidosNovia' required :disabled="disabledForm"
+                      @input="input($event.target)" :pattern="er_apellidosNombres" autocomplete='off' data-upper='1c'>
+                  <small id="" class="form-text text-muted"></small>
+              </div> 
+              <div class="col-6 form-group">
+                  <label for="nombresNovia" class="formControlLabel">Nombres-Novia*</label>
+                    <input type="text" name='nombresNovia' v-model="rec.nombresNovia" class="form-control form-control-sm" 
+                      ref='nombresNovia' id='nombresNovia' required :disabled="disabledForm"
+                      @input="input($event.target)" :pattern="er_apellidosNombres" autocomplete='off' data-upper='1c'>
+                  <small id="" class="form-text text-muted"></small>
+              </div>                        
           </div>   
           <div class="form-row">
-            <div class="col-2 form-group">
-              <label for="fechaBauNovia" class="formControlLabel">Bautiso-Novia*</label>
-              <input-fecha v-model="rec.fechaBauNovia" :habilita='disabledForm'></input-fecha>                
-            </div> 
-            <div class="col-10 form-group">
-              <label for="parroquiaBauNovia" class="formControlLabel">Parroquia Bautiso-Novia*</label>
-                <input type="text" name='parroquiaBauNovia' v-model="rec.parroquiaBauNovia" class="form-control form-control-sm" 
-                  ref='parroquiaBauNovia' id='parroquiaBauNovia' required :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_parroquia" autocomplete='off' data-upper='1c'>
-              <small id="" class="form-text text-muted"></small>
-            </div>                        
+              <div class="col-2 form-group">
+                <label for="fechaBauNovia" class="formControlLabel">Bautiso-Novia*</label>
+                <input-fecha v-model="rec.fechaBauNovia" :habilita='disabledForm'></input-fecha>                
+                  <!-- <label for="rec.fechaBauNovia" class="formControlLabel">Bautiso-Novia*</label>
+                    <input type="date" name='rec.fechaBauNovia' v-model="rec.fechaBauNovia" class="form-control form-control-sm" 
+                      ref='fechaBauNovia' placeholder="" :disabled="disabledForm"
+                      @input="input($event.target)" pattern="" autocomplete='off'>
+                  <small id="" class="form-text text-muted"></small> -->
+              </div> 
+              <div class="col-10 form-group">
+                  <label for="parroquiaBauNovia" class="formControlLabel">Parroquia Bautiso-Novia*</label>
+                    <input type="text" name='parroquiaBauNovia' v-model="rec.parroquiaBauNovia" class="form-control form-control-sm" 
+                      ref='parroquiaBauNovia' id='parroquiaBauNovia' required :disabled="disabledForm"
+                      @input="input($event.target)" :pattern="er_parroquia" autocomplete='off' data-upper='1c'>
+                  <small id="" class="form-text text-muted"></small>
+              </div>                        
           </div> 
           <div class="form-row">
-            <div class="col-12 form-group">
-              <label for="direccionNovia" class="formControlLabel">Direccion-Novia</label>
-                <input type="text" name='direccionNovia' v-model="rec.direccionNovia" class="form-control form-control-sm" 
-                  ref='direccionNovia' :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_direccion" autocomplete='off' data-upper='1c'>
-              <small id="" class="form-text text-muted"></small>
-            </div>          
+              <div class="col-12 form-group">
+                  <label for="direccionNovia" class="formControlLabel">Direccion-Novia</label>
+                    <input type="text" name='direccionNovia' v-model="rec.direccionNovia" class="form-control form-control-sm" 
+                      ref='direccionNovia' :disabled="disabledForm"
+                      @input="input($event.target)" :pattern="er_direccion" autocomplete='off' data-upper='1c'>
+                  <small id="" class="form-text text-muted"></small>
+              </div>          
           </div>  
           <div class="form-row">
-            <div class="col-6 form-group">
-              <label for="padreNovia" class="formControlLabel">Padre-Novia*</label>
-                <input type="text" name='padreNovia' v-model="rec.padreNovia" class="form-control form-control-sm" 
-                  ref='padreNovia' id='padreNovia' required :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_apellidosNombres" autocomplete='off' data-upper='1c'>
-              <small id="" class="form-text text-muted"></small>
-            </div> 
-            <div class="col-6 form-group">
-              <label for="madreNovia" class="formControlLabel">Madre-Novia*</label>
-                <input type="text" name='madreNovia' v-model="rec.madreNovia" class="form-control form-control-sm" 
-                  ref='madreNovia' id='madreNovia' required :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_apellidosNombres" autocomplete='off' data-upper='1c'>
-              <small id="" class="form-text text-muted"></small>
-            </div>                        
+              <div class="col-6 form-group">
+                  <label for="padreNovia" class="formControlLabel">Padre-Novia*</label>
+                    <input type="text" name='padreNovia' v-model="rec.padreNovia" class="form-control form-control-sm" 
+                      ref='padreNovia' id='padreNovia' required :disabled="disabledForm"
+                      @input="input($event.target)" :pattern="er_apellidosNombres" autocomplete='off' data-upper='1c'>
+                  <small id="" class="form-text text-muted"></small>
+              </div> 
+              <div class="col-6 form-group">
+                  <label for="madreNovia" class="formControlLabel">Madre-Novia*</label>
+                    <input type="text" name='madreNovia' v-model="rec.madreNovia" class="form-control form-control-sm" 
+                      ref='madreNovia' id='madreNovia' required :disabled="disabledForm"
+                      @input="input($event.target)" :pattern="er_apellidosNombres" autocomplete='off' data-upper='1c'>
+                  <small id="" class="form-text text-muted"></small>
+              </div>                        
           </div> 
           <hr class='separacion'>   
           <div class="form-row">
-            <div class="col-2 form-group">
-              <label for="fechaAutorizacion" class="formControlLabel">Fecha-Autorizacion*</label>
-              <input-fecha v-model="rec.fechaAutorizacion" :habilita='disabledForm'></input-fecha>
-            </div>   
-            <div class="col-10 form-group">
-              <label for="vicario" class="formControlLabel">Vicario*</label>
-                <input type="text" name='vicario' v-model="rec.vicario" class="form-control form-control-sm" 
-                  ref='vicario' id='vicario' required :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_vicario" autocomplete='off' data-upper='1c'>
-              <small id="" class="form-text text-muted"></small>
-            </div>    
+              <div class="col-2 form-group">
+                <label for="fechaAutorizacion" class="formControlLabel">Fecha-Autorizacion*</label>
+                <input-fecha v-model="rec.fechaAutorizacion" :habilita='disabledForm'></input-fecha>
+                  <!-- <label for="fechaAutorizacion" class="formControlLabel">Fecha-Autorizacion*</label>
+                    <input type="date" name='fechaAutorizacion' v-model="rec.fechaAutorizacion" class="form-control form-control-sm" 
+                      ref='fechaAutorizacion' id='fechaAutorizacion' required :disabled="disabledForm"
+                      @input="input($event.target)" pattern="" autocomplete='off'>
+                  <small id="" class="form-text text-muted"></small>  -->
+              </div>   
+              <div class="col-10 form-group">
+                  <label for="vicario" class="formControlLabel">Vicario*</label>
+                    <input type="text" name='vicario' v-model="rec.vicario" class="form-control form-control-sm" 
+                      ref='vicario' id='vicario' required :disabled="disabledForm"
+                      @input="input($event.target)" :pattern="er_vicario" autocomplete='off' data-upper='1c'>
+                  <small id="" class="form-text text-muted"></small>
+              </div>    
           </div>  
           <div class="form-row">
-            <div class="col-12 form-group">
-              <label for="cabecera1" class="formControlLabel">Cabecera 1</label>
-              <input type="text" name='cabecera1' v-model="rec.cabecera1" class="form-control form-control-sm"
-                  ref='cabecera1' :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_cabecera" autocomplete='off'>
-              <small id="" class="form-text text-muted"></small>
-            </div>
+              <div class="col-12 form-group">
+                  <label for="cabecera1" class="formControlLabel">Cabecera 1</label>
+                  <input type="text" name='cabecera1' v-model="rec.cabecera1" class="form-control form-control-sm"
+                      ref='cabecera1' :disabled="disabledForm"
+                      @input="input($event.target)" :pattern="er_cabecera" autocomplete='off'>
+                  <small id="" class="form-text text-muted"></small>
+              </div>
           </div> 
           <div class="form-row">
-            <div class="col-12 form-group">
-              <label for="cabecera2" class="formControlLabel">Cabecera 2</label>
-              <input type="text" name='cabecera2' v-model="rec.cabecera2" class="form-control form-control-sm"
-                  ref='cabecera2' :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_cabecera" autocomplete='off'>
-              <small id="" class="form-text text-muted"></small>
-            </div>
+              <div class="col-12 form-group">
+                  <label for="cabecera2" class="formControlLabel">Cabecera 2</label>
+                  <input type="text" name='cabecera2' v-model="rec.cabecera2" class="form-control form-control-sm"
+                      ref='cabecera2' :disabled="disabledForm"
+                      @input="input($event.target)" :pattern="er_cabecera" autocomplete='off'>
+                  <small id="" class="form-text text-muted"></small>
+              </div>
           </div> 
           <div class="form-row">
-            <div class="col-12 form-group">
-              <label for="observaciones" class="formControlLabel">Observaciones 1</label>
-              <input type="text" name='observaciones' v-model="rec.observaciones1" class="form-control form-control-sm"
-                  ref='observaciones1' :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_observaciones" autocomplete='off'>
-              <small id="" class="form-text text-muted"></small>
-            </div>
+              <div class="col-12 form-group">
+                  <label for="observaciones" class="formControlLabel">Observaciones 1</label>
+                  <input type="text" name='observaciones' v-model="rec.observaciones1" class="form-control form-control-sm"
+                      ref='observaciones1' :disabled="disabledForm"
+                      @input="input($event.target)" :pattern="er_observaciones" autocomplete='off'>
+                  <small id="" class="form-text text-muted"></small>
+              </div>
+
           </div> 
           <div class="form-row">
-            <div class="col-12 form-group">
-              <label for="observaciones" class="formControlLabel">Observaciones 2</label>
-              <input type="text" name='observaciones' v-model="rec.observaciones2" class="form-control form-control-sm"
-                  ref='observaciones2' :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_observaciones" autocomplete='off'>
-              <small id="" class="form-text text-muted"></small>
-            </div>
+              <div class="col-12 form-group">
+                  <label for="observaciones" class="formControlLabel">Observaciones 2</label>
+                  <input type="text" name='observaciones' v-model="rec.observaciones2" class="form-control form-control-sm"
+                      ref='observaciones2' :disabled="disabledForm"
+                      @input="input($event.target)" :pattern="er_observaciones" autocomplete='off'>
+                  <small id="" class="form-text text-muted"></small>
+              </div>
               
           </div>          
       </form> 
@@ -266,7 +312,9 @@ console.log('<< PliegoMatrimonial.vue >>');
 const idForm = 'formExpediente';
 
 import opcionesCrud from '@/components/opciones-crud.vue'
+// import inputFecha from '@/components/input-fecha.vue';
 
+// import { disabledForm, disabledElementId } from '@/assets/js/lib';
 import { evalInput, evalValue, evalDate } from '@/assets/js/form';
 
 import moment from 'moment';
@@ -281,7 +329,8 @@ import { mapState } from 'vuex';
 export default {
   name: 'PliegoMatrimonial',
   components: {
-    opcionesCrud
+    opcionesCrud,
+    // inputFecha
   },  
   data(){
     return {
@@ -292,7 +341,7 @@ export default {
       title_detail: '',
       // lenguaje: es,
       fechaHoy: moment().format('MM/DD/YYYY'),   // UTCs     
-      searchExpediente: ['numeroExpediente','fechaExpediente','Novio','Novia','fechaAutorizacion','parroquiaCelebracion'],
+      searchExpediente: ['numeroExpediente','fechaExpediente','Novio','Novia','parroquiaCelebracion'],
       view_content: true,
       itemCurrent: 0,
       observacionesCrud: '',
@@ -346,7 +395,6 @@ export default {
       if( this.crud == 'R' ) this.title_detail = 'Datos';           
       if( this.crud == 'U' ) this.title_detail = 'Edita';
       if( this.crud == 'D' ) this.title_detail = 'Anula' ;
-      
       if( this.crud == 'R' ) this.disabledForm = true;
       if( this.crud == 'U') this.disabledForm = false;
       if( this.crud == 'D' )  this.disabledForm = true;
@@ -358,7 +406,8 @@ export default {
       this.rec = {};
     },
     evaluaItem(){
-      // console.log('evaluaItem()');
+      // let objForm = document.getElementById(idForm);
+      // console.dir(objForm);
       let obs='';
       let evaluacion = true;
 
@@ -391,7 +440,7 @@ export default {
       return evaluacion;
     },
     detalleItem(index){
-      // console.log(`detalleItem(${index})`);
+      console.log(`detalleItem(${index})`);
       this.crud = 'R';
       this.rec = this.tmpListRec[index];
       this.list_view();
@@ -406,7 +455,9 @@ export default {
       // console.log('confirmCreate()');
       let title = 'Nuevo Expediente';
 
-      if ( !this.evaluaItem() ) { 
+      let condicion = false;
+      // if ( !this.evaluaItem() ) { 
+      if ( condicion ) { 
         swal2.fire({title: title, text: 'Verique los datos ingresados: '+this.observacionesCrud });
       }else{
         this.rec.creado_usuario = this.User_Name;
@@ -440,11 +491,28 @@ export default {
       if ( !this.evaluaItem() ) { 
         await swal2.fire({title: title, text: 'Verique los datos ingresados: '+this.observacionesCrud });
       }else{
+        // swal2.fire({title: title, text: 'Datos OK.'});
+        // let data = {  
+        //   numeroExpediente: this.rec.numeroExpediente, 
+        //   apellidosNombres: this.rec.apellidosNombres,
+        //   direccion: this.rec.direccion,
+        //   codJerarquia: this.rec.codJerarquia,
+        //   codDepartamento: this.rec.codDepartamento,
+        //   codProvincia: this.rec.codProvincia,          
+        //   codDistrito: this.rec.codDistrito,
+        //   telefono1: this.rec.telefono1,
+        //   telefono2: this.rec.telefono2,
+        //   movil: this.rec.movil,
+        //   email: this.rec.email,
+        //   modificado: new Date(),
+        //   modificado_usuario: this.User_Name
         delete this.rec.Novio;
         delete this.rec.Novia;
         this.rec.modificado = new Date();
         this.rec.modificado_usuario = this.User_Name
+      // };  
 
+        // console.log('data: ', data)
         let url = this.host+'/pliegomatrimonial/update';
         let options = {
           method: 'PUT',
@@ -457,7 +525,7 @@ export default {
           let res = await data.json();
           if( res.status ) this.loadListRec();
           let text = (res.status)? 'Modificado Satisfactoriamente.': 'Fallo modificacion!';
-          await swal2.fire({title: title+` (${res.numeroExpediente})`, text: text});
+            await swal2.fire({title: title+` (${res.numeroExpediente})`, text: text});
           this.exitForm();
         } catch (error) {
           console.log('Error:', error);
@@ -476,7 +544,7 @@ export default {
       let title = 'Anula Expediente';
       
       this.rec.eliminado = new Date();
-      this.rec.eliminado_usuario = this.User_Name;
+      this.rec.eliminado_usuario =  this.User_Name;
       let url = this.host+'/pliegomatrimonial/delete';
       let options = {
         method: 'DELETE',
@@ -489,6 +557,7 @@ export default {
         if( res.status ) this.loadListRec();          
         let text = (res.status)? 'Anulado Satisfactoriamente!': 'Fallo la anulacion!';
         await swal2.fire({title: title, text: text});
+        // disabledForm(idForm, false);
         this.exitForm();
       } catch (error) {
         console.log('Error:', error);

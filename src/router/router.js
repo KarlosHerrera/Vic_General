@@ -6,7 +6,9 @@ import VueRouter from 'vue-router';
 import Home from '@/components/Home';
 import Menu from '@/components/Menu';
 import PliegoMatrimonial from '@/components/PliegoMatrimonial';
-
+import LicenciaTraslado from '@/components/LicenciaTraslado';
+import DispensaBautismal from '@/components/DispensaBautismal';
+import LicenciaBautismo from '@/components/LicenciaBautismo';
 // import Tablas from '@/components/Tablas';
 
 
@@ -34,7 +36,22 @@ const routes = [
     path: '/pliegomatrimonial',
     name: 'pliegomatrimonial',
     component: PliegoMatrimonial
-  }  
+  },
+  {
+    path: '/licenciatraslado',
+    name: 'licenciatraslado',
+    component: LicenciaTraslado
+  },
+  {
+    path: '/dispensabautismal',
+    name: 'dispensabautismal',
+    component: DispensaBautismal
+  },
+  {
+    path: '/licenciabautismo',
+    name: 'licenciabautismo',
+    component: LicenciaBautismo
+  },     
     
 ]
 

@@ -1,4 +1,4 @@
-// pliegomatrimonialCtrl.js
+// licenciatrasladoCtrl.js
 const express = require('express');
 const router = express.Router();
 const conn = require('../assets/js/db_mysql.js');
@@ -7,7 +7,7 @@ const  moment =require('moment');
 moment.locale('es');
 
 router.get('/', (req, res) => {
-    let sql = 'SELECT apellidosNombres, codcargo FROM pliegomatrimonial';
+    let sql = 'SELECT apellidosNombres, codcargo FROM licenciatraslado';
     conn.query(sql, function(err, rows){
         if(err) throw err;
         // console.log('Type =', typeof(rows));
@@ -28,11 +28,11 @@ router.get('/', (req, res) => {
 });
 // Get all documents
 router.get('/all', (req, res) => {
-    console.log('pliegomatrimonial/all');
+    console.log('licenciatraslado/all');
     let sql = `SELECT *,
                   LEFT( CONCAT(apellidosNovia,', ',nombresNovia ), 70 ) AS Novia,
                   LEFT( CONCAT(apellidosNovio,', ',nombresNovio ), 70 ) AS Novio
-                FROM pliegomatrimonial ORDER BY idPMatrimonial`;
+                FROM licenciatraslado ORDER BY idLicenciaTraslado`;
     conn.query(sql, function(err, rows){
         if(err) throw err;
         res.status(200).json(rows);
@@ -40,10 +40,10 @@ router.get('/all', (req, res) => {
     });
 
 });
-router.get('/pliegomatrimonial_min', (req, res) => {
-    console.log('pliegomatrimonial/pliegomatrimonial_min');
+router.get('/licenciatraslado_min', (req, res) => {
+    console.log('licenciatraslado/licenciatraslado_min');
 
-    const sql = "SELECT numeroExpediente, apellidosNombres FROM pliegomatrimonial WHERE activo = 'S' ORDER BY apellidosNombres";
+    const sql = "SELECT numeroExpediente, apellidosNombres FROM licenciatraslado WHERE activo = 'S' ORDER BY apellidosNombres";
     conn.query(sql, function(err, rows){
         if(err) throw err;
         res.status(200).json(rows);
@@ -70,12 +70,12 @@ router.post('/id', async (req, res) => {
 
 // Create document
 router.post('/create', async (req, res) => {
-    console.log('/pliegomatrimonial/create');
+    console.log('/licenciatraslado/create');
     // const {docLegalizacion, fechaDoc, codInstitucion, nombreInstitucion} = req.body;
     let data = req.body;
     let numeroExpediente = data.numeroExpediente;
 
-    conn.query('INSERT INTO pliegomatrimonial SET ?', [data], function(err, rows){
+    conn.query('INSERT INTO licenciatraslado SET ?', [data], function(err, rows){
         if(err){
             console.log('sqlMessage: ', err.sqlMessage);
             console.log('sql: ', err.sql);
@@ -89,13 +89,12 @@ router.post('/create', async (req, res) => {
 });
 // Update document
 router.put('/update', (req, res) => {
-    console.log('/pliegomatrimonial/update');
+    console.log('/licenciatraslado/update');
     const data = req.body;
-    const numeroExpediente = data.idPMatrimonial;
-    delete data.idPMatrimonial;
+    const numeroExpediente = data.idLicenciaTraslado;
+    delete data.idLicenciaTraslado;
     data.modificado = moment(data.modificado).format('YYYY-MM-DD hh:mm:ss');
-    let sql = "UPDATE pliegomatrimonial SET ? WHERE idPMatrimonial = ?";
-    // console.log('Data =>', data);    
+    let sql = "UPDATE licenciatraslado SET ? WHERE idLicenciaTraslado = ?";  
     conn.query(sql, [data, numeroExpediente], function(err){
         if(err){
             console.log('sqlMessage: ', err.sqlMessage);
@@ -109,14 +108,14 @@ router.put('/update', (req, res) => {
 
 // Delete one document
 router.delete('/delete', async (req, res) => {
-    console.log('/pliegomatrimonial/delete');
+    console.log('/licenciatraslado/delete');
     let data = req.body;
-    let numeroExpediente= data.idPMatrimonial;
+    let numeroExpediente= data.idLicenciaTraslado;
     let eliminado = moment(data.eliminado).format('YYYY-MM-DD hh:mm:ss');
-    let eliminiado_usuario = data.eliminado_usuario;
+    let eliminado_usuario = data.eliminado_usuario;
     // let sql = 'DELETE FROM movimientoDocumento WHERE codInstitucion = ?';
-    let sql = "UPDATE pliegomatrimonial SET activo = ?, eliminado = ?, eliminado_usuario = ? WHERE idPMatrimonial = ?";
-    conn.query(sql, ['N',eliminado,eliminiado_usuario,numeroExpediente], function(err){
+    let sql = "UPDATE licenciatraslado SET activo = ?, eliminado = ?, eliminado_usuario = ? WHERE idLicenciaTraslado = ?";
+    conn.query(sql, ['N',eliminado,eliminado_usuario,numeroExpediente], function(err){
         if(err){ 
             console.log('sqlMessage: ', err.sqlMessage);
             console.log('sql: ', err.sql);

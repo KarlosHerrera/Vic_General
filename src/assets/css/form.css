@@ -40,7 +40,7 @@ input {
     box-shadow: none;
 }
 .form-control:disabled {
-	/* background-color: rgb(216, 211, 211); */
+	background-color: rgb(245, 245, 245);
 
 }
 /* End Boostrap  */
