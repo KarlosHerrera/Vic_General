@@ -30,6 +30,7 @@ export default new Vuex.Store({
     er_parroquia: "^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,99}$",
     er_apellidosNombres: "^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,50}$",
     er_direccion: `^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,99}$`,
+    er_lugar: `^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,49}$`,
     er_vicario: "^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,49}$",
     er_cabecera: "^[A-Z0-9]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,99}$",
     er_observaciones: "^[A-Z0-9]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,99}$",

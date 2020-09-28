@@ -30,7 +30,7 @@
       </thead>
       <tbody id='bodyTable' class='' >
         <tr v-for="(doc, index) in tmpListRec" :key='index' @dblclick='detalleItem(index)' @mouseover='itemFocus(index)' @blur='itemBlur'>
-          <td> {{ doc.idlicenciabautismo }} </td>
+          <td> {{ doc.idLicenciaBautismo }} </td>
           <td> {{ doc.numeroExpediente}} </td>
           <td class='align_center'> {{ doc.fechaExpediente | frmFecha }} </td>
           <td> {{ doc.Bautizado }} </td>
@@ -52,7 +52,7 @@
               <div class="col-2 form-group">
                 <label for="numeroExpediente" class="formControlLabel">Licencia*</label>
                 <input type="text" name='numeroExpediente' v-model="rec.numeroExpediente" class="form-control form-control-sm" 
-                  ref='numeroExpediente' id='numeroExpediente' required :disabled="disabledForm"
+                  ref='numeroExpediente' id='numeroExpediente' :disabled="disabledForm" required
                   @input="input($event.target)" :pattern="er_numeroExpediente" autocomplete='off' data-upper='1c'>
                 <small id="" class="form-text text-muted"></small>
               </div>  
@@ -63,9 +63,9 @@
           </div> 
           <div class="form-row">  
             <div class="col-12 form-group">
-              <label for="parroquiaOrigen" class="formControlLabel">Parroquia-Bautizo*</label>
-                <input type="text" name='parroquiaOrigen' v-model="rec.parroquiaOrigen" class="form-control form-control-sm" 
-                  ref='parroquiaOrigen' id='parroquiaOrigen' required :disabled="disabledForm"
+              <label for="parroquiaBautizo" class="formControlLabel">Parroquia-Bautizo*</label>
+                <input type="text" name='parroquiaOrigen' v-model="rec.parroquiaBautizo" class="form-control form-control-sm" 
+                  ref='parroquiabautizo' id='parroquiabautizo' required :disabled="disabledForm"
                   @input="input($event.target)" :pattern="er_parroquia" autocomplete='off' data-upper='1c'>
               <small id="" class="form-text text-muted"></small>
             </div>    
@@ -73,55 +73,58 @@
           <hr class='separacion'>
           <div class="form-row">
             <div class="col-6 form-group">
-              <label for="apellidosNovio" class="formControlLabel">Apellidos*</label>
-                <input type="text" name='apellidosNovia' v-model="rec.apellidosNovio" class="form-control form-control-sm" 
-                  ref='apellidosNovio' id='apellidosNovio' required :disabled="disabledForm"
+              <label for="apellidos" class="formControlLabel">Apellidos*</label>
+                <input type="text" name='apellidos' v-model="rec.apellidos" class="form-control form-control-sm" 
+                  ref='apellidos' id='apellidos' required :disabled="disabledForm"
                   @input="input($event.target)" :pattern="er_apellidosNombres" autocomplete='off' data-upper='1c'>
               <small id="" class="form-text text-muted"></small>
             </div> 
             <div class="col-6 form-group">
-              <label for="nombresNovio" class="formControlLabel">Nombres*</label>
-                <input type="text" name='nombresNovia' v-model="rec.nombresNovio" class="form-control form-control-sm" 
-                  ref='nombresNovio'  id='nombresNovio' required :disabled="disabledForm"
+              <label for="nombres" class="formControlLabel">Nombres*</label>
+                <input type="text" name='nombres' v-model="rec.nombres" class="form-control form-control-sm" 
+                  ref='nombres'  id='nombres' required :disabled="disabledForm"
                   @input="input($event.target)" :pattern="er_apellidosNombres" autocomplete='off' data-upper='1c'>
               <small id="" class="form-text text-muted"></small>
             </div>                        
           </div>  
           <div class="form-row">
-            <div class="col-2 form-group">
-              <label for="fechaBauNovio" class="formControlLabel">Bautiso-Novio*</label>
-              <input-fecha v-model="rec.fechaBauNovio" :habilita='disabledForm'></input-fecha>
-            </div>            
-            <div class="col-10 form-group">
-              <label for="parroquiaBauNovio" class="formControlLabel">Parroquia Bautiso-Novio*</label>
-                <input type="text" name='parroquiaBauNovio' v-model="rec.parroquiaBauNovio" class="form-control form-control-sm" 
-                  ref='parroquiaBauNovio' id='parroquiaBauNovio' required :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_parroquia" autocomplete='off' data-upper='1c'>
+            <div class="col-1 form-group">
+              <label for="edad" class="formControlLabel">Edad*</label>
+              <input type="text" name='edad' v-model.number="rec.edad" class="form-control form-control-sm align_right" 
+                ref='edad' id='edad' :disabled="disabledForm"
+                @input="input($event.target)" pattern="^[0-9]{1,2}$" autocomplete='off'>
+              <small id="" class="form-text text-muted"></small>
+            </div>
+            <div class="col-11 form-group">
+              <label for="lugarnacimiento" class="formControlLabel">Lugar-Nacimiento*</label>
+              <input type="text" name='lugarnacimiento' v-model="rec.lugarNacimiento" class="form-control form-control-sm" 
+                ref='lugarnacimiento' id='lugarnacimiento' :disabled="disabledForm"
+                @input="input($event.target)" :pattern="er_lugar" autocomplete='off' data-upper='1c'>
               <small id="" class="form-text text-muted"></small>
             </div>                                     
           </div>       
           <div class="form-row">
             <div class="col-12 form-group">
-              <label for="direccionNovio" class="formControlLabel">Direccion</label>
-                <input type="text" name='direccionNovio' v-model="rec.direccionNovio" class="form-control form-control-sm" 
-                  ref='direccionNovio' id='direccionNovio' :disabled="disabledForm"
+              <label for="direccion" class="formControlLabel">Direccion</label>
+                <input type="text" name='direccion' v-model="rec.direccion" class="form-control form-control-sm" 
+                  ref='direccion' id='direccion' :disabled="disabledForm"
                   @input="input($event.target)" :pattern="er_direccion" autocomplete='off' data-upper='1c'>
               <small id="" class="form-text text-muted"></small>
             </div>          
           </div> 
           <div class="form-row">
             <div class="col-6 form-group">
-              <label for="padreNovio" class="formControlLabel">Documento</label>
-                <input type="text" name='padreNovia' v-model="rec.padreNovio" class="form-control form-control-sm" 
-                  ref='padreNovio' id='padreNovio' :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_apellidosNombres" autocomplete='off' data-upper='1c'>
+              <label for="documentoacredita" class="formControlLabel">Documento-Acreditacion</label>
+              <input type="text" name='documentoacredita' v-model="rec.documentoAcredita" class="form-control form-control-sm" 
+                ref='documentoacredita' id='documentoacredita' :disabled="disabledForm"
+                @input="input($event.target)" :pattern="er_lugar" autocomplete='off' data-upper='1c'>
               <small id="" class="form-text text-muted"></small>
             </div> 
             <div class="col-6 form-group">
-              <label for="madreNovio" class="formControlLabel">Tiempo-</label>
-                <input type="text" name='madreNovia' v-model="rec.madreNovio" class="form-control form-control-sm" 
-                  ref='madreNovio' id='madreNovio' required :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_apellidosNombres" autocomplete='off' data-upper='1c'>
+              <label for="tiempoIns" class="formControlLabel">Tiempo-Instruccion</label>
+              <input type="text" name='tiempoIns' v-model="rec.tiempoIns" class="form-control form-control-sm" 
+                ref='tiempoIns' id='tiempoIns' required :disabled="disabledForm"
+                @input="input($event.target)" :pattern="er_apellidosNombres" autocomplete='off' data-upper='1c'>
               <small id="" class="form-text text-muted"></small>
             </div>                        
           </div>
@@ -232,7 +235,7 @@ export default {
       title_detail: '',
       // lenguaje: es,
       fechaHoy: moment().format('MM/DD/YYYY'),   // UTCs     
-      searchExpediente: ['numeroExpediente','fechaExpediente','Novio','Novia','fechaAutorizacion','parroquiaMatrimonio'],
+      searchExpediente: ['numeroExpediente','fechaExpediente','Bautizado','fechaAutorizacion','parroquiaBautizo'],
       view_content: true,
       itemCurrent: 0,
       observacionesCrud: '',
@@ -241,7 +244,7 @@ export default {
     }
   },  
   computed: { // Expone state al template
-     ...mapState(['host','User_Name','er_numeroExpediente','er_parroquia','er_apellidosNombres','er_direccion','er_vicario','er_observacion','er_testigo','parentesco' ]), 
+     ...mapState(['host','User_Name','er_numeroExpediente','er_parroquia','er_apellidosNombres','er_direccion','er_vicario','er_observacion','er_testigo','er_parentesco','er_lugar']), 
   },
   methods: {
     setComponent(){
@@ -256,31 +259,21 @@ export default {
         this.title_detail = 'Nuevo'; 
         this.disabledForm = false;
 
-        this.rec.numeroExpediente = '00001';
+        this.rec.numeroExpediente = '4001';
         this.rec.fechaExpediente = moment(this.fechaHoy).format('YYYY-MM-DD');
-        this.rec.diocesisOrigen = 'Diocesis Origen'
-        this.rec.parroquiaOrigen = 'Parroquia origen' 
-        this.rec.parroquiaDestino = 'Parroquia destino' 
-        this.rec.parroquiaMatrimonio = 'Parroquia Matrimonio'
-        this.rec.apellidosNovia = 'Apelldisos Novia 1'
-        this.rec.nombresNovia = 'Nombres Novia 1'
-        this.rec.fechaBauNovia =  moment(this.fechaHoy).format('YYYY-MM-DD');
-        this.rec.parroquiaBauNovia ='Parroquia Novia'
-        this.rec.direccionNovia = 'Direccion novia'
-        this.rec.padreNovia = 'Padre Novia 1'
-        this.rec.madreNovia = 'Madre Novia 1'
-        this.rec.apellidosNovio = 'Apellidos Novio 1'
-        this.rec.nombresNovio = 'Nombres Novio 1'
-        this.rec.fechaBauNovio =  moment(this.fechaHoy).format('YYYY-MM-DD');   
-        this.rec.parroquiaBauNovio ='Parroquia Novio'     
-        this.rec.direccionNovio = 'Direccion novio'
-        this.rec.padreNovio = 'Padre Novia'
-        this.rec.madreNovio = 'Madre Novia'
-        this.rec.vicario = 'Vicario ----------------'
-        // this.rec.fechaMatCivil =  moment(this.fechaHoy).format('YYYY-MM-DD');
-        // this.rec.fechaMatReligioso =  moment(this.fechaHoy).format('YYYY-MM-DD');
-        // this.rec.fechaAutorizacion =  moment(this.fechaHoy).format('YYYY-MM-DD');
+        this.rec.parroquiaBautizo = 'Parroquia bautizo' 
+        this.rec.apellidos = 'Apellidos'
+        this.rec.nombres = 'Nombres'
 
+        // this.rec.edad = '07'
+        this.rec.lugarNacimiento = 'Lugar de Nacimiento'
+        this.rec.direccion = 'Direccion bautizado'
+
+        this.rec.documentoAcredita ='Parroquia Novio'     
+        this.rec.tiempoIns = 'T[iempo'
+
+        this.rec.fechaAutorizacion = ''
+        this.rec.vicario = 'Vicario ----------------'
 
       }
       if( this.crud == 'R' ) this.title_detail = 'Datos';           
@@ -303,31 +296,17 @@ export default {
 
       if( !evalValue('numeroExpediente') ) { obs+='*Expediente '; evaluacion = false}
       if( !evalDate(this.rec.fechaExpediente) ) { obs+='*Fecha '; evaluacion = false}
-      if( !evalValue('diocesisOrigen') ) { obs+=' *Diocesis '; evaluacion = false}
-      if( !evalValue('parroquiaMatrimonio') ) { obs+=' *Parroquia-Celebracion '; evaluacion = false}
-       if( !evalValue('parroquiaOrigen') ) { obs+=' *Parroquia-Origen '; evaluacion = false}
-       if( !evalValue('parroquiaDestino') ) { obs+=' *Parroquia-Destino '; evaluacion = false}
+      if( !evalValue('parroquiabautizo') ) { obs+=' *Parroquia-Bautizo '; evaluacion = false}
 
-      if( !evalValue('apellidosNovio') ) {obs+=' *Apellidos-Novio'; evaluacion = false}
-      if( !evalValue('nombresNovio') ) {obs+=' *Nombres-Novio'; evaluacion = false}
-      if( !evalDate(this.rec.fechaBauNovio) ) { obs+='*Fecha-Bautiso-Novio'; evaluacion = false}
-      if( !evalValue('parroquiaBauNovio') ) {obs+=' *Parr-Bautiso-Novio'; evaluacion = false}
-      if( !evalValue('padreNovio') ) {obs+=' *Padre-Novio'; evaluacion = false}
-      if( !evalValue('madreNovio') ) {obs+=' *Madre-Novio'; evaluacion = false}
+      if( !evalValue('apellidos') ) {obs+=' *Apellidos'; evaluacion = false}
+      if( !evalValue('nombres') ) {obs+=' *Nombres'; evaluacion = false}
 
-      // if( !evalString(this.rec.nombresNovio) ) {obs+=' *Nombres-Novio'; evaluacion = false}
-      if( !evalValue('apellidosNovia') ) {obs+=' *Apellidos-Novia'; evaluacion = false}
-      if( !evalValue('nombresNovia') ) {obs+=' *Nombres-Novia'; evaluacion = false}
-      if( !evalDate(this.rec.fechaBauNovia) ) { obs+='*Fecha-Bautiso-Novia'; evaluacion = false}
-      if( !evalValue('parroquiaBauNovia') ) {obs+=' *Parr-Bautiso-Novia'; evaluacion = false}
-      if( !evalValue('padreNovia') ) {obs+=' *Padre-Novia'; evaluacion = false}
-      if( !evalValue('madreNovia') ) {obs+=' *Madre-Novia'; evaluacion = false}      
+      if( !evalValue('edad') ) {obs+=' *Edad '; evaluacion = false}
+      if( !evalValue('lugarnacimiento') ) {obs+=' *Lugar-Nacimiento '; evaluacion = false}
 
-      if( !evalDate(this.rec.fechaAutorizacion) ) { obs+='*Fecha-Autorizacion'; evaluacion = false}
+      if( !evalDate(this.rec.fechaAutorizacion) ) { obs+='*Fecha-Autorizacion '; evaluacion = false}
       if( !evalValue('vicario') ) {obs+=' *Vicario'; evaluacion = false}
-
-// this.rec.fechaMatCivil = '2020-02-28'
-// if( !evalDate(this.rec.fechaMatCivil) ) { obs+='*Fecha-Civil'; evaluacion = false}     
+   
       this.observacionesCrud = obs;
       return evaluacion;
     },
@@ -345,7 +324,7 @@ export default {
     },
     confirmCreate: async function(){
       // console.log('confirmCreate()');
-      let title = 'Nueva Licencia';
+      let title = 'Nueva Licencia de Bautismo';
 
       if ( !this.evaluaItem() ) { 
         swal2.fire({title: title, text: 'Verique los datos ingresados: '+this.observacionesCrud });
@@ -365,7 +344,7 @@ export default {
           await swal2.fire({ title: `Nuevo Expediente: ${res.numeroExpediente}`, text: text });
           this.exitForm();    // Componente padre
         } catch (error) {
-            console.log('Error:', error);
+          console.log('Error:', error);
         }    
       }    
     },
@@ -377,12 +356,11 @@ export default {
     },
     confirmUpdate: async function(){
       // console.log('confirmUpdate()');
-      let title = 'Edita Licencia';
+      let title = 'Edita Licencia de Bautismo';
       if ( !this.evaluaItem() ) { 
         await swal2.fire({title: title, text: 'Verique los datos ingresados: '+this.observacionesCrud });
       }else{
-        delete this.rec.Novio;
-        delete this.rec.Novia;
+        delete this.rec.Bautizado;
         this.rec.modificado = new Date();
         this.rec.modificado_usuario = this.User_Name
 
@@ -414,7 +392,7 @@ export default {
     },
     confirmDelete: async function(){
       // console.log('confirmDelete()');
-      let title = 'Anula Expediente';
+      let title = 'Anula Licencia de Bautismo';
       
       this.rec.eliminado = new Date();
       this.rec.eliminado_usuario = this.User_Name;
@@ -444,16 +422,17 @@ export default {
           headers: { 'Content-Type': 'application/json' },
       };
       try {
-          let data = await fetch(url, options);
-          let res = await data.json();
-          this.ListRec = res;
-          this.tmpListRec = res;
+        let data = await fetch(url, options);
+        let res = await data.json();
+        this.ListRec = res;
+        this.tmpListRec = res;
       } catch (error) {
-          console.log('Error:', error);
+        console.log('Error:', error);
       }      
 
     },
     input: function(self){
+      console.log('Valor = ', self.value, '->',typeof(self.value));
       evalInput(self);
     },
     exitForm: function(){
@@ -468,11 +447,8 @@ export default {
     filterProcess: function(value){
       // console.log('value = ', value);
       this.tmpListRec = value;
-    },
-    confirmaFecha(value, self){
-      console.log(`confirmaFecha(${value},${self})`);
-      // this.rec.fecha = value;
     }
+
   },
    // Hooks
   created: function(){
@@ -492,7 +468,7 @@ export default {
 <style scoped>
 .detailRecord {
   /* height: 550px; */
-  height: 90%;
+  height: 80%;
   
 }
 .crud {

@@ -61,20 +61,17 @@ export default {
             // this.$refs.dia.select();
             // console.log('value: ', this.value)
             // this.fecha = $attrs.value;
-            console.log('setComponent().this.value > ', this.value)
-            // console.log('setComponent().this.label => ', this.label)
-
-            if( this.value != '' ){
+            // console.log('setComponent().this.value > ', this.value)
+            // if( this.value != '' ){
                 let tmpFecha = moment(this.value);
-                if( tmpFecha.isValid() ){
-                    // console.log('valido...')
+                if( !tmpFecha.isValid() || typeof(this.value)=='undefined' ){
+                    console.log('<input-fecha>Fecha incorrecta!')
+                }else{                    // console.log('valido...')
                     this.dd= moment(tmpFecha).format('DD');
                     this.mm= moment(tmpFecha).format('MM');
                     this.aa= moment(tmpFecha).format('YYYY');
-                }else{
-                    console.log('<input-fecha>Fecha incorrecta!')
                 }                 
-            }
+            // }
 
         },
         select(self){

@@ -6,26 +6,6 @@ const conn = require('../assets/js/db_mysql.js');
 const  moment =require('moment');
 moment.locale('es');
 
-router.get('/', (req, res) => {
-    let sql = 'SELECT apellidosNombres, codcargo FROM licenciatraslado';
-    conn.query(sql, function(err, rows){
-        if(err) throw err;
-        // console.log('Type =', typeof(rows));
-        // let filas = res.json(rows);
-        // console.log('filas ===================================> ', filas);
-        for( let i =0; i < rows.length ; i++ ){
-            // console.log(i, rows[i].apellidosNombres);
-        }
-        res.status(500).json(rows);
-        // con.end();
-        //res.status(500).json([]);
-        // res.status(200).json({ status: true, msg: 'Successfull'});
-    });    
-    // res.json({
-    //     status: 'ok',
-    //     crud: 'read all'
-    // });
-});
 // Get all documents
 router.get('/all', (req, res) => {
     console.log('licenciatraslado/all');

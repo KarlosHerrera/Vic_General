@@ -9,11 +9,11 @@ moment.locale('es');
 
 // Get all documents
 router.get('/all', (req, res) => {
-    console.log('dispensapartidab/all');
+    console.log('dispensabautismal/all');
     let sql = `SELECT *,
-                  LEFT( CONCAT(apellidosNovia,', ',nombresNovia ), 70 ) AS Novia,
-                  LEFT( CONCAT(apellidosNovio,', ',nombresNovio ), 70 ) AS Novio
-                FROM dispensapartidab ORDER BY idDipensaPartidaB`;
+                  LEFT( CONCAT(apellidosDispensado,', ',nombresDispensado ), 70 ) AS Dispensado,
+                  LEFT( CONCAT(apellidosContrayente,', ',nombresContrayente), 70 ) AS Contrayente
+                FROM dispensapartidab ORDER BY idDispensaPartidaB`;
     conn.query(sql, function(err, rows){
         if(err) throw err;
         res.status(200).json(rows);
@@ -22,7 +22,7 @@ router.get('/all', (req, res) => {
 
 });
 router.get('/dispensapartidab_min', (req, res) => {
-    console.log('dispensapartidab/dispensapartidab_min');
+    console.log('dispensabautismal/dispensapartidab_min');
 
     const sql = "SELECT numeroExpediente, apellidosNombres FROM dispensapartidab WHERE activo = 'S' ORDER BY apellidosNombres";
     conn.query(sql, function(err, rows){
@@ -51,7 +51,7 @@ router.post('/id', async (req, res) => {
 
 // Create document
 router.post('/create', async (req, res) => {
-    console.log('/dispensapartidab/create');
+    console.log('/dispensabautismal/create');
     // const {docLegalizacion, fechaDoc, codInstitucion, nombreInstitucion} = req.body;
     let data = req.body;
     let numeroExpediente = data.numeroExpediente;
@@ -70,7 +70,7 @@ router.post('/create', async (req, res) => {
 });
 // Update document
 router.put('/update', (req, res) => {
-    console.log('/dispensapartidab/update');
+    console.log('/dispensabautismal/update');
     const data = req.body;
     const numeroExpediente = data.idDispensaPartidaB;
     delete data.idDispensaPartidaB;
@@ -89,7 +89,7 @@ router.put('/update', (req, res) => {
 
 // Delete one document
 router.delete('/delete', async (req, res) => {
-    console.log('/dispensapartidab/delete');
+    console.log('/dispensabautismal/delete');
     let data = req.body;
     let numeroExpediente= data.idDispensaPartidaB;
     let eliminado = moment(data.eliminado).format('YYYY-MM-DD hh:mm:ss');

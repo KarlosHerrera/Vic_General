@@ -10,12 +10,11 @@ moment.locale('es');
 router.get('/all', (req, res) => {
     console.log('licenciabautismo/all');
     let sql = `SELECT *,
-                  LEFT( CONCAT(apellidos,', ',nombres ), 70 ) AS Bautizado,
-                FROM licenciabautismo ORDER BY idLicenciaBautismo`;
+                  LEFT( CONCAT(apellidos,', ',nombres ), 70 ) AS Bautizado
+                FROM licenciabautismo  ORDER BY idLicenciaBautismo`;
     conn.query(sql, function(err, rows){
         if(err) throw err;
         res.status(200).json(rows);
-        // con.end();
     });
 
 });
@@ -27,7 +26,6 @@ router.get('/licenciabautismo_min', (req, res) => {
         if(err) throw err;
         res.status(200).json(rows);
         // res.send(rows);
-        // conn.end();
     });
 });
 // User verify 

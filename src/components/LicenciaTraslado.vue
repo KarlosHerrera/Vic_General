@@ -20,7 +20,7 @@
       <thead class='rounded-top'>
         <tr>
           <th>Consec.<span></span></th>
-          <th>Pliego<span></span></th>
+          <th>Licencia<span></span></th>
           <th class="align_center">Fecha<span></span></th>          
           <th>Novio<span></span></th>
           <th>Novia<span></span></th>
@@ -52,7 +52,7 @@
       <form id='formExpediente' ref='formExpediente' class='formBase' onsubmit="return false;" novalidate autocomplete="nope" data-btnEnable='btnSave'>
           <div class="form-row">
               <div class="col-2 form-group">
-                <label for="numeroExpediente" class="formControlLabel">Pliego*</label>
+                <label for="numeroExpediente" class="formControlLabel">Licencia*</label>
                 <input type="text" name='numeroExpediente' v-model="rec.numeroExpediente" class="form-control form-control-sm" 
                   ref='numeroExpediente' id='numeroExpediente' required :disabled="disabledForm"
                   @input="input($event.target)" :pattern="er_numeroExpediente" autocomplete='off' data-upper='1c'>
@@ -401,7 +401,7 @@ export default {
     },
     confirmCreate: async function(){
       // console.log('confirmCreate()');
-      let title = 'Nuevo Expediente';
+      let title = 'Nueva Licencia de Traslado';
 
       if ( !this.evaluaItem() ) { 
         swal2.fire({title: title, text: 'Verique los datos ingresados: '+this.observacionesCrud });
@@ -433,7 +433,7 @@ export default {
     },
     confirmUpdate: async function(){
       // console.log('confirmUpdate()');
-      let title = 'Edita Pliego';
+      let title = 'Edita Licencia de Traslado';
       if ( !this.evaluaItem() ) { 
         await swal2.fire({title: title, text: 'Verique los datos ingresados: '+this.observacionesCrud });
       }else{
@@ -470,7 +470,7 @@ export default {
     },
     confirmDelete: async function(){
       // console.log('confirmDelete()');
-      let title = 'Anula Expediente';
+      let title = 'Anula Licencia de Traslado';
       
       this.rec.eliminado = new Date();
       this.rec.eliminado_usuario = this.User_Name;
@@ -524,11 +524,8 @@ export default {
     filterProcess: function(value){
       // console.log('value = ', value);
       this.tmpListRec = value;
-    },
-    confirmaFecha(value, self){
-      console.log(`confirmaFecha(${value},${self})`);
-      // this.rec.fecha = value;
     }
+
   },
    // Hooks
   created: function(){

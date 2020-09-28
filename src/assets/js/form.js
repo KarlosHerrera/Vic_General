@@ -28,8 +28,6 @@ export function evalInput(obj){
 	// let lEstado = obj.validity.valid;						// estado resultante del conjunto de atributos del input
 	let upper = obj.getAttribute('data-upper');
 	if(upper){
-		// let vue_valor = obj.getAttribute('v-model');
-		// console.log('vue_valor = ',  vue_valor);
 		switch(upper.toUpperCase()) {
 			case "1C":
 			if(nLonText==1) obj.value = sValor.toUpperCase(); 
@@ -65,11 +63,12 @@ export function evalInput(obj){
 	if( vForm ) {
 		if( btnEnable ) btnEnable.removeAttribute('disabled');
 	}else{
+		console.log('Formulario invalido!');
 		if( btnEnable ) btnEnable.setAttribute('disabled','');
 	}
 }
 export function evalValue(id){
-	// console.log(`evalValue(${id})`);
+	console.log(`evalValue(${id})`);
 	if( !id || id == null || !typeof(Id) == 'string') return false;	
 	let obj = document.getElementById(id);
 	if( !obj ) {console.log(`Error: id = ${ id }`); return false;}
@@ -98,7 +97,7 @@ export function evalString(value){
 // 	return true;
 // }
 export function evalDate(value){
-	// console.log(`evalDate(${value})`);
+	console.log(`evalDate(${value})`);
 	if( !value || value == null ) return false;
 	if( typeof(value) != 'string' || value.trim() == '' ) return false;
 	if( value.length != 10 ) return false;

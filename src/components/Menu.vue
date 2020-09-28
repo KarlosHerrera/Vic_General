@@ -6,7 +6,7 @@
     <div class='itmMenu' @click="action('/licenciabautismo')"><p>Licencia de</p><p>Bautismo</p><p>de Adulto</p></div>
     <div class='itmMenu'><p>Dispensa de</p><p>Proclamas</p></div>
     <div class='itmMenu' @click="action('/licenciatraslado')"><p>Licencia de</p><p>Traslado</p></div>
-    <div class='itmMenu' @click="action('/licenciatraslado')"><p class='align_center'>Dispensa de</p><p> Partida Bautismal</p></div>
+    <div class='itmMenu' @click="action('/dispensabautismal')"><p class='align_center'>Dispensa de</p><p> Partida Bautismal</p></div>
     <div class='itmMenu'><p>Medio Pliego</p><p>Matrimonial</p></div>
   </div>
 </template> 
