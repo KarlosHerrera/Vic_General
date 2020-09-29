@@ -39,7 +39,7 @@ export default new Vuex.Store({
     er_diligencia: "^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,99}$",
     er_razones: "^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,99}$",
     er_procedimiento: "^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,99}$",
-    er_impedimento: "^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,49}$",
+    er_impedimento: "^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,79}$",
     er_causal: "^[A-Z]{1}[a-zA-Z0-9 áéíóúñÑ #-.()/]{1,99}$",
 
   },

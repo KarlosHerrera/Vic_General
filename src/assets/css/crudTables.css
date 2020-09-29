@@ -20,8 +20,9 @@
   }
   .titulo_2 {
       font-size: 1.2rem;
-        font-weight: 600;
+      font-weight: 600;
       color: black;
+      padding: 3px 0;
   }
   .itemCurrent {
         height: 1.7rem;

@@ -16,6 +16,9 @@ const pliegomatrimonialCtrl = require('./controllers/pliegoMatrimonialCtrl');
 const licenciatrasladoCtrl = require('./controllers/licenciaTrasladoCtrl');
 const dispensabautismalCtrl = require('./controllers/dispensaBautismalCtrl');
 const licenciabautismoCtrl = require('./controllers/licenciaBautismoCtrl');
+const dispensaimpedimentosCtrl = require('./controllers/dispensaImpedimentosCtrl');
+const dispensaproclamasCtrl = require('./controllers/dispensaProclamasCtrl');
+const mediopliegolCtrl = require('./controllers/medioPliegoCtrl');
 
 app.set('port', process.env.PORT || 3001);  // Configuracion de puerto (variables globales)
 
@@ -34,6 +37,9 @@ app.use('/pliegomatrimonial', pliegomatrimonialCtrl);
 app.use('/licenciatraslado', licenciatrasladoCtrl);
 app.use('/dispensabautismal', dispensabautismalCtrl);
 app.use('/licenciabautismo', licenciabautismoCtrl);
+app.use('/dispensaimpedimentos', dispensaimpedimentosCtrl);
+app.use('/dispensaproclamas', dispensaproclamasCtrl);
+app.use('/mediopliego', mediopliegolCtrl);
 
 // Settings
 

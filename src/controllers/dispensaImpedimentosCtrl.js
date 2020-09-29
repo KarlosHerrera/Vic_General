@@ -1,4 +1,4 @@
-// licenciaBaustismoCtrl.js
+// dispensaimpedimentosCtrl.js
 const express = require('express');
 const router = express.Router();
 const conn = require('../assets/js/db_mysql.js');
@@ -6,26 +6,30 @@ const conn = require('../assets/js/db_mysql.js');
 const  moment =require('moment');
 moment.locale('es');
 
+
 // Get all documents
 router.get('/all', (req, res) => {
-    console.log('licenciabautismo/all');
+    console.log('dispensaimpedimentos/all');
     let sql = `SELECT *,
-                  LEFT( CONCAT(apellidos,', ',nombres ), 70 ) AS Bautizado
-                FROM licenciabautismo  ORDER BY idLicenciaBautismo`;
+                  LEFT( CONCAT(apellidosNovio,', ',nombresNovio ), 70 ) AS Novio,
+                  LEFT( CONCAT(apellidosNovia,', ',nombresNovia), 70 ) AS Novia
+                FROM dispensaimpedimentos ORDER BY idDispensaImpedimentos`;
     conn.query(sql, function(err, rows){
         if(err) throw err;
         res.status(200).json(rows);
+        // con.end();
     });
 
 });
-router.get('/licenciabautismo_min', (req, res) => {
-    console.log('licenciabautismo/licenciabautismo_min');
+router.get('/dispensaimpedimentos_min', (req, res) => {
+    console.log('dispensaimpedimentos/dispensaimpedimentos_min');
 
-    const sql = "SELECT numeroExpediente, apellidosNombres FROM licenciabautismo WHERE activo = 'S' ORDER BY apellidosNombres";
+    const sql = "SELECT numeroExpediente, apellidosNombres FROM dispensaimpedimentos WHERE activo = 'S' ORDER BY apellidosNombres";
     conn.query(sql, function(err, rows){
         if(err) throw err;
         res.status(200).json(rows);
         // res.send(rows);
+        // conn.end();
     });
 });
 // User verify 
@@ -47,12 +51,12 @@ router.post('/id', async (req, res) => {
 
 // Create document
 router.post('/create', async (req, res) => {
-    console.log('/licenciabautismo/create');
+    console.log('/dispensaimpedimentos/create');
     // const {docLegalizacion, fechaDoc, codInstitucion, nombreInstitucion} = req.body;
     let data = req.body;
     let numeroExpediente = data.numeroExpediente;
 
-    conn.query('INSERT INTO licenciabautismo SET ?', [data], function(err, rows){
+    conn.query('INSERT INTO dispensaimpedimentos SET ?', [data], function(err, rows){
         if(err){
             console.log('sqlMessage: ', err.sqlMessage);
             console.log('sql: ', err.sql);
@@ -65,12 +69,12 @@ router.post('/create', async (req, res) => {
 });
 // Update document
 router.put('/update', (req, res) => {
-    console.log('/licenciabautismo/update');
+    console.log('/dispensaimpedimentos/update');
     const data = req.body;
-    const numeroExpediente = data.idLicenciaBautismo;
-    delete data.idlLicenciaBautismo;
+    const numeroExpediente = data.idDispensaImpedimentos;
+    delete data.idDispensaImpedimentos;
     data.modificado = moment(data.modificado).format('YYYY-MM-DD hh:mm:ss');
-    let sql = "UPDATE licenciabautismo SET ? WHERE idLicenciaBautismo = ?";  
+    let sql = "UPDATE dispensaimpedimentos SET ? WHERE idDispensaImpedimentos = ?";  
     conn.query(sql, [data, numeroExpediente], function(err){
         if(err){
             console.log('sqlMessage: ', err.sqlMessage);
@@ -84,13 +88,13 @@ router.put('/update', (req, res) => {
 
 // Delete one document
 router.delete('/delete', async (req, res) => {
-    console.log('/licenciabautismo/delete');
+    console.log('/dispensaimpedimentos/delete');
     let data = req.body;
-    let numeroExpediente= data.idLicenciaBautismo;
+    let numeroExpediente= data.idDispensaImpedimentos;
     let eliminado = moment(data.eliminado).format('YYYY-MM-DD hh:mm:ss');
     let eliminado_usuario = data.eliminado_usuario;
     // let sql = 'DELETE FROM movimientoDocumento WHERE codInstitucion = ?';
-    let sql = "UPDATE licenciabautismo SET activo = ?, eliminado = ?, eliminado_usuario = ? WHERE idLicenciaBautismo = ?";
+    let sql = "UPDATE dispensaimpedimentos SET activo = ?, eliminado = ?, eliminado_usuario = ? WHERE idDispensaImpedimentos = ?";
     conn.query(sql, ['N',eliminado,eliminado_usuario,numeroExpediente], function(err){
         if(err){ 
             console.log('sqlMessage: ', err.sqlMessage);

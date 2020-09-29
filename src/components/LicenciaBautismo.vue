@@ -2,8 +2,8 @@
 <template>
 <div class="content">
   <div class="content-title">
-        <div class='titulo_2 align_center' v-if='view_content'>Licencia de Bautismo de Adulto</div>   
-        <div class='titulo_2 align_center' v-if='!view_content'>{{title_detail}} - Licencia de Bautismo de Adulto</div>
+        <div class='titulo_2 align_center'>Licencia de Bautismo de Adulto</div>   
+        <div class='titulo_2 align_center' v-if='!view_content'>{{ title_detail }}</div>
     <div class="headerTitle d-flex justify-content-between">
         <div class='d-flex justify-content-start align-items-center' v-if='view_content' >
             <button class='btn btn-sm btn_1 btn_new' @click='createItem'>Nuevo</button>
@@ -105,7 +105,7 @@
           </div>       
           <div class="form-row">
             <div class="col-12 form-group">
-              <label for="direccion" class="formControlLabel">Direccion</label>
+              <label for="direccion" class="formControlLabel">Dirección</label>
                 <input type="text" name='direccion' v-model="rec.direccion" class="form-control form-control-sm" 
                   ref='direccion' id='direccion' :disabled="disabledForm"
                   @input="input($event.target)" :pattern="er_direccion" autocomplete='off' data-upper='1c'>
@@ -267,7 +267,7 @@ export default {
 
         // this.rec.edad = '07'
         this.rec.lugarNacimiento = 'Lugar de Nacimiento'
-        this.rec.direccion = 'Direccion bautizado'
+        this.rec.direccion = 'Dirección bautizado'
 
         this.rec.documentoAcredita ='Parroquia Novio'     
         this.rec.tiempoIns = 'T[iempo'
@@ -468,7 +468,7 @@ export default {
 <style scoped>
 .detailRecord {
   /* height: 550px; */
-  height: 80%;
+  height: 82%;
   
 }
 .crud {

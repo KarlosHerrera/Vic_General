@@ -9,8 +9,10 @@ import PliegoMatrimonial from '@/components/PliegoMatrimonial';
 import LicenciaTraslado from '@/components/LicenciaTraslado';
 import DispensaBautismal from '@/components/DispensaBautismal';
 import LicenciaBautismo from '@/components/LicenciaBautismo';
+import DispensaImpedimentos from '@/components/DispensaImpedimentos';
+import DispensaProclamas from '@/components/DispensaProclamas';
+import MedioPliego from '@/components/MedioPliego';
 // import Tablas from '@/components/Tablas';
-
 
 Vue.use(VueRouter)
 
@@ -52,8 +54,23 @@ const routes = [
     name: 'licenciabautismo',
     component: LicenciaBautismo
   },     
-    
-]
+  {
+    path: '/dispensaimpedimentos',
+    name: 'dispensaimpedimentos',
+    component: DispensaImpedimentos
+  }, 
+  {
+    path: '/dispensaproclamas',
+    name: 'dispensaproclamas',
+    component: DispensaProclamas
+  }, 
+  {
+    path: '/mediopliego',
+    name: 'mediopliego',
+    component: MedioPliego
+  }
+]      
+
 
 const router = new VueRouter({
   mode: 'history',

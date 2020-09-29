@@ -62,7 +62,6 @@ router.post('/create', async (req, res) => {
             console.log('sql: ', err.sql);
             res.json({status: false, msg: 'Unsucessfull', numeroExpediente: numeroExpediente, crud: 'create'});
         }else{
-            console.log(rows);
             res.json({status: true, msg: 'Sucessfull', numeroExpediente: numeroExpediente, crud: 'create'});
         }
     })

@@ -2,8 +2,8 @@
 <template>
 <div class="content">
   <div class="content-title">
-        <div class='titulo_2 align_center' v-if='view_content'>Pliego Matrimonial Nuevo</div>   
-        <div class='titulo_2 align_center' v-if='!view_content'>{{title_detail}} - Pliego Matrimonial Nuevo</div>
+        <div class='titulo_2 align_center' >Pliego Matrimonial Nuevo</div>   
+        <div class='titulo_2 align_center' v-if='!view_content'>{{ title_detail }}</div>
     <div class="headerTitle d-flex justify-content-between">
         <div class='d-flex justify-content-start align-items-center' v-if='view_content' >
             <button class='btn btn-sm btn_1 btn_new' @click='createItem'>Nuevo</button>
@@ -65,7 +65,7 @@
                 <!-- @input="rec.fechaExpediente = $event.target.value" -->
               </div>              
               <div class="col-8 form-group">
-                <label for="diocesisOrigen" class="formControlLabel">Diocesis-Origen*</label>
+                <label for="diocesisOrigen" class="formControlLabel">Diócesis-Origen*</label>
                   <input type="text" name='diocesisOrigen' v-model="rec.diocesisOrigen" class="form-control form-control-sm" 
                     ref='diocesisOrigen' id='diocesisOrigen' required :disabled="disabledForm"
                     @input="input($event.target)" :pattern="er_diocesis" autocomplete='off' data-upper='1c'>
@@ -108,11 +108,11 @@
           </div>  
           <div class="form-row">
             <div class="col-2 form-group">
-              <label for="fechaBauNovio" class="formControlLabel">Bautiso-Novio*</label>
+              <label for="fechaBauNovio" class="formControlLabel">Bautizo-Novio*</label>
               <input-fecha v-model="rec.fechaBauNovio" :habilita='disabledForm'></input-fecha>
             </div>            
             <div class="col-10 form-group">
-              <label for="parroquiaBauNovio" class="formControlLabel">Parroquia Bautiso-Novio*</label>
+              <label for="parroquiaBauNovio" class="formControlLabel">Parroquia Bautizo-Novio*</label>
                 <input type="text" name='parroquiaBauNovio' v-model="rec.parroquiaBauNovio" class="form-control form-control-sm" 
                   ref='parroquiaBauNovio' id='parroquiaBauNovio' required :disabled="disabledForm"
                   @input="input($event.target)" :pattern="er_parroquia" autocomplete='off' data-upper='1c'>
@@ -121,7 +121,7 @@
           </div>       
           <div class="form-row">
             <div class="col-12 form-group">
-              <label for="direccionNovio" class="formControlLabel">Direccion-Novio</label>
+              <label for="direccionNovio" class="formControlLabel">Dirección-Novio</label>
                 <input type="text" name='direccionNovio' v-model="rec.direccionNovio" class="form-control form-control-sm" 
                   ref='direccionNovio' id='direccionNovio' :disabled="disabledForm"
                   @input="input($event.target)" :pattern="er_direccion" autocomplete='off' data-upper='1c'>
@@ -163,11 +163,11 @@
           </div>   
           <div class="form-row">
             <div class="col-2 form-group">
-              <label for="fechaBauNovia" class="formControlLabel">Bautiso-Novia*</label>
+              <label for="fechaBauNovia" class="formControlLabel">Bautizo-Novia*</label>
               <input-fecha v-model="rec.fechaBauNovia" :habilita='disabledForm'></input-fecha>                
             </div> 
             <div class="col-10 form-group">
-              <label for="parroquiaBauNovia" class="formControlLabel">Parroquia Bautiso-Novia*</label>
+              <label for="parroquiaBauNovia" class="formControlLabel">Parroquia Bautizo-Novia*</label>
                 <input type="text" name='parroquiaBauNovia' v-model="rec.parroquiaBauNovia" class="form-control form-control-sm" 
                   ref='parroquiaBauNovia' id='parroquiaBauNovia' required :disabled="disabledForm"
                   @input="input($event.target)" :pattern="er_parroquia" autocomplete='off' data-upper='1c'>
@@ -176,7 +176,7 @@
           </div> 
           <div class="form-row">
             <div class="col-12 form-group">
-              <label for="direccionNovia" class="formControlLabel">Direccion-Novia</label>
+              <label for="direccionNovia" class="formControlLabel">Dirección-Novia</label>
                 <input type="text" name='direccionNovia' v-model="rec.direccionNovia" class="form-control form-control-sm" 
                   ref='direccionNovia' :disabled="disabledForm"
                   @input="input($event.target)" :pattern="er_direccion" autocomplete='off' data-upper='1c'>
@@ -326,14 +326,14 @@ export default {
         this.rec.nombresNovia = 'Nombres Novia 1'
         this.rec.fechaBauNovia =  moment(this.fechaHoy).format('YYYY-MM-DD');
         this.rec.parroquiaBauNovia ='Parroquia Novia'
-        this.rec.direccionNovia = 'Direccion novia'
+        this.rec.direccionNovia = 'Dirección novia'
         this.rec.padreNovia = 'Padre Novia 1'
         this.rec.padreNovia = 'Madre Novia 1'
         this.rec.apellidosNovio = 'Apellidos Novio 1'
         this.rec.nombresNovio = 'Nombres Novio 1'
         this.rec.fechaBauNovio =  moment(this.fechaHoy).format('YYYY-MM-DD');   
-         this.rec.parroquiaBauNovio ='Parroquia Novio'     
-        this.rec.direccionNovio = 'Direccion novio'
+        this.rec.parroquiaBauNovio ='Parroquia Novio'     
+        this.rec.direccionNovio = 'Dirección novio'
         this.rec.padreNovio = 'Padre Novia'
         this.rec.padreNovio = 'Madre Novia'
         this.rec.vicario = 'Vicario ----------------'
@@ -369,16 +369,16 @@ export default {
 
       if( !evalValue('apellidosNovio') ) {obs+=' *Apellidos-Novio'; evaluacion = false}
       if( !evalValue('nombresNovio') ) {obs+=' *Nombres-Novio'; evaluacion = false}
-      if( !evalDate(this.rec.fechaBauNovio) ) { obs+='*Fecha-Bautiso-Novio'; evaluacion = false}
-      if( !evalValue('parroquiaBauNovio') ) {obs+=' *Parr-Bautiso-Novio'; evaluacion = false}
+      if( !evalDate(this.rec.fechaBauNovio) ) { obs+='*Fecha-Bautizo-Novio'; evaluacion = false}
+      if( !evalValue('parroquiaBauNovio') ) {obs+=' *Parr-Bautizo-Novio'; evaluacion = false}
       if( !evalValue('padreNovio') ) {obs+=' *Padre-Novio'; evaluacion = false}
       if( !evalValue('madreNovio') ) {obs+=' *Madre-Novio'; evaluacion = false}
 
       // if( !evalString(this.rec.nombresNovio) ) {obs+=' *Nombres-Novio'; evaluacion = false}
       if( !evalValue('apellidosNovia') ) {obs+=' *Apellidos-Novia'; evaluacion = false}
       if( !evalValue('nombresNovia') ) {obs+=' *Nombres-Novia'; evaluacion = false}
-      if( !evalDate(this.rec.fechaBauNovia) ) { obs+='*Fecha-Bautiso-Novia'; evaluacion = false}
-      if( !evalValue('parroquiaBauNovia') ) {obs+=' *Parr-Bautiso-Novia'; evaluacion = false}
+      if( !evalDate(this.rec.fechaBauNovia) ) { obs+='*Fecha-Bautizo-Novia'; evaluacion = false}
+      if( !evalValue('parroquiaBauNovia') ) {obs+=' *Parr-Bautizo-Novia'; evaluacion = false}
       if( !evalValue('padreNovia') ) {obs+=' *Padre-Novia'; evaluacion = false}
       if( !evalValue('madreNovia') ) {obs+=' *Madre-Novia'; evaluacion = false}      
 
@@ -552,7 +552,7 @@ export default {
 <style scoped>
 .detailRecord {
   /* height: 550px; */
-  height: 90%;
+  height: 87%;
   
 }
 .crud {
