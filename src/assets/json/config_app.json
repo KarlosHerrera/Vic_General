@@ -1,5 +1,4 @@
 {
-    "host": "https://arzobispado-lima.herokuapp.com",
 
-    "options": " http://localhost:3000 | https://arzobispado-lima.herokuapp.com "
+    "options": " http://localhost:3001 | https://vicariageneral.herokuapp.com "
 }
