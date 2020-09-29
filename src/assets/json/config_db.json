@@ -1,7 +1,21 @@
 {
-    "host": "localhost",
-    "user": "root",
-    "password": "toor",
-    "database": "vicaria",
-    "port": "3306"
+    "host": "bbizfi645vxrhsytpxjo-mysql.services.clever-cloud.com",
+    "user": "uaqjadmbvvdyhdfo",
+    "password": "f5fFogicqWdu8Rxtfpfc",
+    "database": "bbizfi645vxrhsytpxjo",
+    "port": "3306",
+    "remote": {
+        "host": "bbizfi645vxrhsytpxjo-mysql.services.clever-cloud.com",
+        "user": "uaqjadmbvvdyhdfo",
+        "password": "f5fFogicqWdu8Rxtfpfc",
+        "database": "bbizfi645vxrhsytpxjo",
+        "port": "3306"
+    },
+    "local": {
+        "host": "localhost",
+        "user": "root",
+        "password": "toor",
+        "database": "vicaria",
+        "port": "3306"      
+    }
 }

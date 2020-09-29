@@ -138,7 +138,7 @@
               <label for="direccionNovio" class="formControlLabel">Dirección-Novio</label>
                 <input type="text" name='direccionNovio' v-model="rec.direccionNovio" class="form-control form-control-sm" 
                   ref='direccionNovio' id='direccionNovio' :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_Dirección" autocomplete='off' data-upper='1c'>
+                  @input="input($event.target)" :pattern="er_direccion" autocomplete='off' data-upper='1c'>
               <small id="" class="form-text text-muted"></small>
             </div>          
           </div> 
@@ -241,7 +241,7 @@
               <label for="observacion1" class="formControlLabel">Observaciones 1</label>
               <input type="text" name='observacion1' v-model="rec.observacion1" class="form-control form-control-sm"
                   ref='observacion1' :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_observacion" autocomplete='off'>
+                  @input="input($event.target)" :pattern="er_observaciones" autocomplete='off'>
               <small id="" class="form-text text-muted"></small>
             </div>
           </div> 

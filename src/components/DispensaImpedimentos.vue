@@ -130,7 +130,7 @@
               <label for="causal" class="formControlLabel">Causal para Dispensa</label>
               <input type="text" name='causal' v-model="rec.causal" class="form-control form-control-sm"
                   id='causal' ref='causal' :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="causal" autocomplete='off'>
+                  @input="input($event.target)" :pattern="er_causal" autocomplete='off'>
               <small id="" class="form-text text-muted"></small>
             </div>
           </div>                            
@@ -153,7 +153,7 @@
               <label for="observacion1" class="formControlLabel">Observacion 1</label>
               <input type="text" name='observacion1' v-model="rec.observacion1" class="form-control form-control-sm"
                   ref='observacion1' :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_observacion" autocomplete='off'>
+                  @input="input($event.target)" :pattern="er_observaciones" autocomplete='off'>
               <small id="" class="form-text text-muted"></small>
             </div>
           </div> 
@@ -162,7 +162,7 @@
               <label for="observacion2" class="formControlLabel">Observacion 2</label>
               <input type="text" name='observacion2' v-model="rec.observacion2" class="form-control form-control-sm"
                   ref='observacion2' :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_observacion" autocomplete='off'>
+                  @input="input($event.target)" :pattern="er_observaciones" autocomplete='off'>
               <small id="" class="form-text text-muted"></small>
             </div>
           </div>                     

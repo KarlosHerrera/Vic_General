@@ -18,7 +18,7 @@ let fechaHoy = new Date();
 //const store = new Vuex.Store({
 export default new Vuex.Store({
   state: {
-    User_Name: 'Bulo',
+    User_Name: 'Admin',
     User_Role: 'Adminstrador',
     record: {},
     fechaHoy: fechaHoy,
