@@ -244,7 +244,7 @@ export default {
     }
   },  
   computed: { // Expone state al template
-     ...mapState(['host','User_Name','er_numeroExpediente','er_parroquia','er_apellidosNombres','er_direccion','er_vicario','er_observacion','er_testigo','er_parentesco','er_lugar']), 
+     ...mapState(['host','User_Name','dev','er_numeroExpediente','er_parroquia','er_apellidosNombres','er_direccion','er_vicario','er_observacion','er_testigo','er_parentesco','er_lugar']), 
   },
   methods: {
     setComponent(){
@@ -258,22 +258,23 @@ export default {
       if( this.crud == 'C' ) {
         this.title_detail = 'Nuevo'; 
         this.disabledForm = false;
+        if(this.dev=='dev'){
+          this.rec.numeroExpediente = '4001';
+          this.rec.fechaExpediente = moment(this.fechaHoy).format('YYYY-MM-DD');
+          this.rec.parroquiaBautizo = 'Parroquia bautizo' 
+          this.rec.apellidos = 'Apellidos'
+          this.rec.nombres = 'Nombres'
 
-        this.rec.numeroExpediente = '4001';
-        this.rec.fechaExpediente = moment(this.fechaHoy).format('YYYY-MM-DD');
-        this.rec.parroquiaBautizo = 'Parroquia bautizo' 
-        this.rec.apellidos = 'Apellidos'
-        this.rec.nombres = 'Nombres'
+          // this.rec.edad = '07'
+          this.rec.lugarNacimiento = 'Lugar de Nacimiento'
+          this.rec.direccion = 'Dirección bautizado'
 
-        // this.rec.edad = '07'
-        this.rec.lugarNacimiento = 'Lugar de Nacimiento'
-        this.rec.direccion = 'Dirección bautizado'
+          this.rec.documentoAcredita ='Parroquia Novio'     
+          this.rec.tiempoIns = 'T[iempo'
 
-        this.rec.documentoAcredita ='Parroquia Novio'     
-        this.rec.tiempoIns = 'T[iempo'
-
-        this.rec.fechaAutorizacion = ''
-        this.rec.vicario = 'Vicario ----------------'
+          this.rec.fechaAutorizacion = ''
+          this.rec.vicario = 'Vicario ----------------'
+        }
 
       }
       if( this.crud == 'R' ) this.title_detail = 'Datos';           

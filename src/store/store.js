@@ -20,6 +20,7 @@ export default new Vuex.Store({
   state: {
     User_Name: 'Admin',
     User_Role: 'Adminstrador',
+    dev: 'dev1',
     record: {},
     fechaHoy: fechaHoy,
     host: host,

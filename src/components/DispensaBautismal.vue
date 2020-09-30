@@ -272,7 +272,7 @@ export default {
     }
   },  
   computed: { // Expone state al template
-     ...mapState(['host','User_Name','er_numeroExpediente','er_diocesis','er_parroquia','er_apellidosNombres','er_Direccion','er_vicario','er_cabecera' ]), 
+     ...mapState(['host','User_Name','dev','er_numeroExpediente','er_diocesis','er_parroquia','er_apellidosNombres','er_Direccion','er_vicario','er_cabecera' ]), 
   },
   methods: {
     setComponent(){
@@ -286,33 +286,33 @@ export default {
       if( this.crud == 'C' ) {
         this.title_detail = 'Nueva'; 
         this.disabledForm = false;
+        if(this.dev=='dev'){
+          this.rec.numeroExpediente = '6001';
+          this.rec.fechaExpediente = moment(this.fechaHoy).format('YYYY-MM-DD');
+          this.rec.parroquia = 'Parroquia origen' 
 
-        this.rec.numeroExpediente = '6001';
-        this.rec.fechaExpediente = moment(this.fechaHoy).format('YYYY-MM-DD');
-        this.rec.parroquia = 'Parroquia origen' 
+          this.rec.apellidosDispensado = 'Apelldisos Novia 1'
+          this.rec.nombresDispensado = 'Nombres Novia 1'
+          this.rec.fechaBauDispensado =  moment(this.fechaHoy).format('YYYY-MM-DD');
+          this.rec.parroquiaBauDispensado ='Parroquia Novia'
+          this.rec.diocesisDispensado = 'Diocesis Origen'
 
-        this.rec.apellidosDispensado = 'Apelldisos Novia 1'
-        this.rec.nombresDispensado = 'Nombres Novia 1'
-        this.rec.fechaBauDispensado =  moment(this.fechaHoy).format('YYYY-MM-DD');
-        this.rec.parroquiaBauDispensado ='Parroquia Novia'
-        this.rec.diocesisDispensado = 'Diocesis Origen'
+          this.rec.Diligencia1= 'Diligencia 1'
+          this.rec.Diligencia2= 'Diligencia 2'
+          this.rec.Razones1= 'Razones 1'
+          this.rec.Razones2= 'Razones 2'        
+          this.rec.Procedimiento1= 'Procedimientos1 1'
+          this.rec.Procedimiento2= 'Procedimientos1 2'   
 
-        this.rec.Diligencia1= 'Diligencia 1'
-        this.rec.Diligencia2= 'Diligencia 2'
-        this.rec.Razones1= 'Razones 1'
-        this.rec.Razones2= 'Razones 2'        
-        this.rec.Procedimiento1= 'Procedimientos1 1'
-        this.rec.Procedimiento2= 'Procedimientos1 2'   
+          this.rec.apellidosContrayente = 'Apellidos Contrayente'
+          this.rec.nombresContrayente = 'Nombres Contrayente'
+          this.rec.fechaBauContrayente =  moment(this.fechaHoy).format('YYYY-MM-DD');   
+          this.rec.parroquiaBauContrayente ='Parroquia Novio' 
+          this.rec.diocesisContrayente = 'Diocesis Origen'            
 
-        this.rec.apellidosContrayente = 'Apellidos Contrayente'
-        this.rec.nombresContrayente = 'Nombres Contrayente'
-        this.rec.fechaBauContrayente =  moment(this.fechaHoy).format('YYYY-MM-DD');   
-        this.rec.parroquiaBauContrayente ='Parroquia Novio' 
-        this.rec.diocesisContrayente = 'Diocesis Origen'            
-
-        this.rec.fechaAutorizacion =  moment(this.fechaHoy).format('YYYY-MM-DD');
-        this.rec.vicario = 'Vicario ----------------'
-
+          this.rec.fechaAutorizacion =  moment(this.fechaHoy).format('YYYY-MM-DD');
+          this.rec.vicario = 'Vicario ----------------'
+        }
       }
       if( this.crud == 'R' ) this.title_detail = 'Datos';           
       if( this.crud == 'U' ) this.title_detail = 'Edita';

@@ -1,4 +1,4 @@
 {
-
+    "host": "https://vicariageneral.herokuapp.com",
     "options": " http://localhost:3001 | https://vicariageneral.herokuapp.com "
 }

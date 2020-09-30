@@ -197,7 +197,7 @@ export default {
     }
   },  
   computed: { // Expone state al template
-     ...mapState(['host','User_Name','er_numeroExpediente','er_parroquia','er_apellidosNombres','er_impedimento','er_causal','er_vicario','er_observaciones' ]), 
+     ...mapState(['host','User_Name','dev','er_numeroExpediente','er_parroquia','er_apellidosNombres','er_impedimento','er_causal','er_vicario','er_observaciones' ]), 
   },
   methods: {
     setComponent(){
@@ -212,22 +212,23 @@ export default {
         this.title_detail = 'Nueva'; 
         this.disabledForm = false;
 
-        this.rec.numeroExpediente = '7001';
-        this.rec.fechaExpediente = moment(this.fechaHoy).format('YYYY-MM-DD');
-        this.rec.parroquia = 'Parroquia' 
+        if(this.dev=='dev'){        
+          this.rec.numeroExpediente = '7000';
+          this.rec.fechaExpediente = moment(this.fechaHoy).format('YYYY-MM-DD');
+          this.rec.parroquia = 'Parroquia' 
 
-        this.rec.apellidosNovio = 'Apellidos Novio'
-        this.rec.nombresNovio = 'Nombres Novio'
-        this.rec.apellidosNovia = 'Apellidos Novia'
-        this.rec.nombresNovia = 'Nombres Novia'
+          this.rec.apellidosNovio = 'Apellidos Novio'
+          this.rec.nombresNovio = 'Nombres Novio'
+          this.rec.apellidosNovia = 'Apellidos Novia'
+          this.rec.nombresNovia = 'Nombres Novia'
 
-        this.rec.numeroDispensa='Cuatro'
+          this.rec.numeroDispensa='Cuatro'
 
-        this.rec.fechaAutorizacion =  moment(this.fechaHoy).format('YYYY-MM-DD');
-        this.rec.vicario = 'Vicario ----------------'
-        this.rec.observacion1= 'Procedimientos1 1'     
-        this.rec.observacion2= 'Procedimientos1 2'     
-
+          this.rec.fechaAutorizacion =  moment(this.fechaHoy).format('YYYY-MM-DD');
+          this.rec.vicario = 'Vicario ----------------'
+          this.rec.observacion1= 'Procedimientos1 1'     
+          this.rec.observacion2= 'Procedimientos1 2'     
+        }
       }
       if( this.crud == 'R' ) this.title_detail = 'Datos';           
       if( this.crud == 'U' ) this.title_detail = 'Editar';

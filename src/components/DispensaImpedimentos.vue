@@ -218,7 +218,7 @@ export default {
     }
   },  
   computed: { // Expone state al template
-     ...mapState(['host','User_Name','er_numeroExpediente','er_parroquia','er_apellidosNombres','er_impedimento','er_causal','er_vicario','er_observaciones' ]), 
+     ...mapState(['host','User_Name','dev','er_numeroExpediente','er_parroquia','er_apellidosNombres','er_impedimento','er_causal','er_vicario','er_observaciones' ]), 
   },
   methods: {
     setComponent(){
@@ -232,25 +232,25 @@ export default {
       if( this.crud == 'C' ) {
         this.title_detail = 'Nueva'; 
         this.disabledForm = false;
+        if(this.dev=='dev'){
+          this.rec.numeroExpediente = '2000';
+          this.rec.fechaExpediente = moment(this.fechaHoy).format('YYYY-MM-DD');
+          this.rec.parroquia = 'Parroquia' 
 
-        this.rec.numeroExpediente = '2001';
-        this.rec.fechaExpediente = moment(this.fechaHoy).format('YYYY-MM-DD');
-        this.rec.parroquia = 'Parroquia' 
+          this.rec.apellidosNovio = 'Apelldisos Novio 1'
+          this.rec.nombresNovio = 'Nombres Novio 1'
+          this.rec.apellidosNovia = 'Apelldisos Novia 1'
+          this.rec.nombresNovia = 'Nombres Novia 1'
 
-        this.rec.apellidosNovio = 'Apelldisos Novio 1'
-        this.rec.nombresNovio = 'Nombres Novio 1'
-        this.rec.apellidosNovia = 'Apelldisos Novia 1'
-        this.rec.nombresNovia = 'Nombres Novia 1'
+          this.rec.impedimento1= 'Impedimento 1'
+          this.rec.impedimento2= 'Diligencia 2'
+          this.rec.causal= 'Diligencia 2'
 
-        this.rec.impedimento1= 'Impedimento 1'
-        this.rec.impedimento2= 'Diligencia 2'
-        this.rec.causal= 'Diligencia 2'
-
-        this.rec.fechaAutorizacion =  moment(this.fechaHoy).format('YYYY-MM-DD');
-        this.rec.vicario = 'Vicario ----------------'
-        this.rec.observacion1= 'Procedimientos1 1'     
-        this.rec.observacion2= 'Procedimientos1 2'     
-
+          this.rec.fechaAutorizacion =  moment(this.fechaHoy).format('YYYY-MM-DD');
+          this.rec.vicario = 'Vicario ----------------'
+          this.rec.observacion1= 'Procedimientos1 1'     
+          this.rec.observacion2= 'Procedimientos1 2'     
+        }
       }
       if( this.crud == 'R' ) this.title_detail = 'Datos';           
       if( this.crud == 'U' ) this.title_detail = 'Editar';

@@ -306,7 +306,7 @@ export default {
     }
   },  
   computed: { // Expone state al template
-     ...mapState(['host','User_Name','er_numeroExpediente','er_diocesis','er_parroquia','er_apellidosNombres','er_direccion','er_vicario','er_cabecera','er_observaciones' ]), 
+     ...mapState(['host','User_Name','dev','er_numeroExpediente','er_diocesis','er_parroquia','er_apellidosNombres','er_direccion','er_vicario','er_cabecera','er_observaciones' ]), 
   },
   methods: {
     setComponent(){
@@ -322,31 +322,32 @@ export default {
         this.disabledForm = false;
         // console.log('fechaHoy = ', this.fechaHoy);
         // this.rec.fecha =  moment(this.fechaHoy).format('YYYY-MM-DD');
-
-        this.rec.numeroExpediente = '9000';
-        this.rec.fechaExpediente = moment(this.fechaHoy).format('YYYY-MM-DD');
-        this.rec.diocesisOrigen = 'Diocesis origen'
-        this.rec.parroquiaOrigen = 'Parroquia origen'        
-        this.rec.diocesisDestino = 'Diocesis 1destino'        
-        this.rec.parroquiaMatrimonio = 'Parroquia 1'
-        this.rec.apellidosNovia = 'Apellidos Novia 1'
-        this.rec.nombresNovia = 'Nombres Novia 1'
-        this.rec.fechaBauNovia =  moment(this.fechaHoy).format('YYYY-MM-DD');
-        this.rec.parroquiaBauNovia ='Parroquia Novia'
-        this.rec.direccionNovia = 'Dirección novia'
-        this.rec.padreNovia = 'Padre Novia 1'
-        this.rec.madreNovia = 'Madre Novia 1'
-        this.rec.apellidosNovio = 'Apellidos Novio 1'
-        this.rec.nombresNovio = 'Nombres Novio 1'
-        this.rec.fechaBauNovio =  moment(this.fechaHoy).format('YYYY-MM-DD');   
-         this.rec.parroquiaBauNovio ='Parroquia Novio'     
-        this.rec.direccionNovio = 'Dirección novio'
-        this.rec.padreNovio = 'Padre Novia'
-        this.rec.madreNovio = 'Madre Novia'
-        this.rec.vicario = 'Vicario General'
-        // this.rec.fechaMatCivil =  moment(this.fechaHoy).format('YYYY-MM-DD');
-        this.rec.fechaMatReligioso =  moment(this.fechaHoy).format('YYYY-MM-DD');
-        this.rec.fechaAutorizacion =  moment(this.fechaHoy).format('YYYY-MM-DD');
+        if(this.dev=='dev'){
+          this.rec.numeroExpediente = '9000';
+          this.rec.fechaExpediente = moment(this.fechaHoy).format('YYYY-MM-DD');
+          this.rec.diocesisOrigen = 'Diocesis origen'
+          this.rec.parroquiaOrigen = 'Parroquia origen'        
+          this.rec.diocesisDestino = 'Diocesis 1destino'        
+          this.rec.parroquiaMatrimonio = 'Parroquia 1'
+          this.rec.apellidosNovia = 'Apellidos Novia 1'
+          this.rec.nombresNovia = 'Nombres Novia 1'
+          this.rec.fechaBauNovia =  moment(this.fechaHoy).format('YYYY-MM-DD');
+          this.rec.parroquiaBauNovia ='Parroquia Novia'
+          this.rec.direccionNovia = 'Dirección novia'
+          this.rec.padreNovia = 'Padre Novia 1'
+          this.rec.madreNovia = 'Madre Novia 1'
+          this.rec.apellidosNovio = 'Apellidos Novio 1'
+          this.rec.nombresNovio = 'Nombres Novio 1'
+          this.rec.fechaBauNovio =  moment(this.fechaHoy).format('YYYY-MM-DD');   
+          this.rec.parroquiaBauNovio ='Parroquia Novio'     
+          this.rec.direccionNovio = 'Dirección novio'
+          this.rec.padreNovio = 'Padre Novia'
+          this.rec.madreNovio = 'Madre Novia'
+          this.rec.vicario = 'Vicario General'
+          // this.rec.fechaMatCivil =  moment(this.fechaHoy).format('YYYY-MM-DD');
+          this.rec.fechaMatReligioso =  moment(this.fechaHoy).format('YYYY-MM-DD');
+          this.rec.fechaAutorizacion =  moment(this.fechaHoy).format('YYYY-MM-DD');
+        }
 
       }
       if( this.crud == 'R' ) this.title_detail = 'Datos';           

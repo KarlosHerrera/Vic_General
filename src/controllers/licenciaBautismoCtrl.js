@@ -52,7 +52,7 @@ router.post('/create', async (req, res) => {
     let data = req.body;
     let numeroExpediente = data.numeroExpediente;
 
-    conn.query('INSERT INTO licenciabautismo SET ?', [data], function(err, rows){
+    conn.query('INSERT INTO licenciabautismo SET ?', [data], function(err){
         if(err){
             console.log('sqlMessage: ', err.sqlMessage);
             console.log('sql: ', err.sql);

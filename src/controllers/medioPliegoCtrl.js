@@ -71,6 +71,7 @@ router.post('/create', async (req, res) => {
 router.put('/update', (req, res) => {
     console.log('/mediopliego/update');
     const data = req.body;
+    const numeroExpediente = data.numeroExpediente;
     const idExpediente = data.idPMedioPliego;
     delete data.idPMedioPliego;
     data.modificado = moment(data.modificado).format('YYYY-MM-DD hh:mm:ss');
