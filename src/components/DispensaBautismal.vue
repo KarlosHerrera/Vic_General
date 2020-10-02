@@ -88,14 +88,14 @@
             </div>                        
           </div>  
           <div class="form-row">
-            <div class="col-3 form-group">
+            <div class="col-2 form-group">
               <label for="sexo" class="formControlLabel">Sexo*</label>
-                <v-select v-model="rec.sexo" label="nombreSexo" :disabled="disabledForm"
-                :options="listSexos" :reduce="ele => ele.codigo" placeholder=''
-                :clearable="false" class='miClase'
-                >
-                <div slot="no-options">No existen opciones!</div>
-                </v-select>
+              <v-select v-model="rec.sexo" label="nombreSexo" :disabled="disabledForm"
+              :options="listSexos" :reduce="ele => ele.codigo" placeholder=''
+              :clearable="false" class='miClase'
+              >
+              <div slot="no-options">No existen opciones!</div>
+              </v-select>
             </div>            
           </div>
           <div class="form-row">
@@ -135,7 +135,6 @@
               <small id="" class="form-text text-muted"></small>
             </div>                        
           </div>  
-
           <div class="form-row">
             <div class="col-2 form-group">
               <label for="fechabaucontrayente" class="formControlLabel">Bautizo*</label>
@@ -150,7 +149,7 @@
             </div>    
             <div class="col-5 form-group">
               <label for="diocesiscontrayente" class="formControlLabel">Diocesis Bautizo-Contrayente*</label>
-                <input type="text" name='diocesisContrayente' v-model="rec.diocesisDispensado" class="form-control form-control-sm" 
+                <input type="text" name='diocesisContrayente' v-model="rec.diocesisContrayente" class="form-control form-control-sm" 
                   ref='diocesisContrayente' id='diocesisContrayente' required :disabled="disabledForm"
                   @input="input($event.target)" :pattern="er_parroquia" autocomplete='off' data-upper='1c'>
               <small id="" class="form-text text-muted"></small>
@@ -272,7 +271,7 @@ export default {
     }
   },  
   computed: { // Expone state al template
-     ...mapState(['host','User_Name','dev','er_numeroExpediente','er_diocesis','er_parroquia','er_apellidosNombres','er_Direccion','er_vicario','er_cabecera' ]), 
+     ...mapState(['host','User_Name','Vicario','dev','er_numeroExpediente','er_diocesis','er_parroquia','er_apellidosNombres','er_Direccion','er_vicario','er_cabecera' ]), 
   },
   methods: {
     setComponent(){
@@ -286,6 +285,7 @@ export default {
       if( this.crud == 'C' ) {
         this.title_detail = 'Nueva'; 
         this.disabledForm = false;
+        this.rec.vicario = this.Vicario;
         if(this.dev=='dev'){
           this.rec.numeroExpediente = '6001';
           this.rec.fechaExpediente = moment(this.fechaHoy).format('YYYY-MM-DD');
@@ -311,7 +311,7 @@ export default {
           this.rec.diocesisContrayente = 'Diocesis Origen'            
 
           this.rec.fechaAutorizacion =  moment(this.fechaHoy).format('YYYY-MM-DD');
-          this.rec.vicario = 'Vicario ----------------'
+          // this.rec.vicario = 'Vicario ----------------'
         }
       }
       if( this.crud == 'R' ) this.title_detail = 'Datos';           
@@ -513,6 +513,7 @@ export default {
 <style scoped src='@/assets/css/form.css'></style>
 <style scoped src='@/assets/css/scroll_bar.css'></style>
 <style scoped src="@/assets/css/crudTables.css"></style>
+<style src="@/assets/css/vue-select.css"></style>
 
 
 <style scoped>
@@ -534,5 +535,13 @@ export default {
   border-bottom: 2px; 
 }
 /* ----------- */
+.v-select {
+  background-color: white;
+  border: none;
 
+}
+.vs__dropdown-toggle{
+  /* line-height: 13px !important; */
+  padding: 0 !important;
+}
 </style>

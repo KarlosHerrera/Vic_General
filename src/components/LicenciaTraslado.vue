@@ -136,10 +136,10 @@
           </div>       
           <div class="form-row">
             <div class="col-12 form-group">
-              <label for="DirecciónNovio" class="formControlLabel">Dirección-Novio</label>
-                <input type="text" name='DirecciónNovio' v-model="rec.DirecciónNovio" class="form-control form-control-sm" 
-                  ref='DirecciónNovio' id='DirecciónNovio' :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_Dirección" autocomplete='off' data-upper='1c'>
+              <label for="direccionNovio" class="formControlLabel">Dirección-Novio</label>
+                <input type="text" name='direccionNovio' v-model="rec.direccionNovio" class="form-control form-control-sm" 
+                  ref='direccionNovio' id='direccionNovio' :disabled="disabledForm"
+                  @input="input($event.target)" :pattern="er_direccion" autocomplete='off' data-upper='1c'>
               <small id="" class="form-text text-muted"></small>
             </div>          
           </div> 
@@ -191,10 +191,10 @@
           </div> 
           <div class="form-row">
             <div class="col-12 form-group">
-              <label for="DirecciónNovia" class="formControlLabel">Dirección-Novia</label>
-                <input type="text" name='DirecciónNovia' v-model="rec.DirecciónNovia" class="form-control form-control-sm" 
-                  ref='DirecciónNovia' :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_Dirección" autocomplete='off' data-upper='1c'>
+              <label for="direccionNovia" class="formControlLabel">Dirección-Novia</label>
+                <input type="text" name='direccionNovia' v-model="rec.direccionNovia" class="form-control form-control-sm" 
+                  ref='direccionNovia' :disabled="disabledForm"
+                  @input="input($event.target)" :pattern="er_direccion" autocomplete='off' data-upper='1c'>
               <small id="" class="form-text text-muted"></small>
             </div>          
           </div>  
@@ -297,7 +297,7 @@ export default {
     }
   },  
   computed: { // Expone state al template
-     ...mapState(['host','User_Name','dev','er_numeroExpediente','er_diocesis','er_parroquia','er_apellidosNombres','er_Dirección','er_vicario','er_cabecera' ]), 
+     ...mapState(['host','User_Name','Vicario','dev','er_numeroExpediente','er_diocesis','er_parroquia','er_apellidosNombres','er_direccion','er_vicario','er_cabecera' ]), 
   },
   methods: {
     setComponent(){
@@ -311,6 +311,7 @@ export default {
       if( this.crud == 'C' ) {
         this.title_detail = 'Nuevo'; 
         this.disabledForm = false;
+        this.rec.vicario = this.Vicario;
         if(this.dev=='dev'){
           this.rec.numeroExpediente = '8001';
           this.rec.fechaExpediente = moment(this.fechaHoy).format('YYYY-MM-DD');
@@ -332,7 +333,7 @@ export default {
           this.rec.DirecciónNovio = 'Dirección novio'
           this.rec.padreNovio = 'Padre Novia'
           this.rec.madreNovio = 'Madre Novia'
-          this.rec.vicario = 'Vicario ----------------'
+          // this.rec.vicario = 'Vicario ----------------'
           // this.rec.fechaMatCivil =  moment(this.fechaHoy).format('YYYY-MM-DD');
           // this.rec.fechaMatReligioso =  moment(this.fechaHoy).format('YYYY-MM-DD');
           // this.rec.fechaAutorizacion =  moment(this.fechaHoy).format('YYYY-MM-DD');

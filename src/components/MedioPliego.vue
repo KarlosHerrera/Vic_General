@@ -238,7 +238,7 @@
           </div> 
           <div class="form-row">
             <div class="col-12 form-group">
-              <label for="observacion1" class="formControlLabel">Observaciones 1</label>
+              <label for="observacion1" class="formControlLabel">Observacion 1</label>
               <input type="text" name='observacion1' v-model="rec.observacion1" class="form-control form-control-sm"
                   ref='observacion1' :disabled="disabledForm"
                   @input="input($event.target)" :pattern="er_observaciones" autocomplete='off'>
@@ -247,7 +247,7 @@
           </div> 
           <div class="form-row">
             <div class="col-12 form-group">
-              <label for="observacion2" class="formControlLabel">Observaciones 2</label>
+              <label for="observacion2" class="formControlLabel">Observacion 2</label>
               <input type="text" name='observacion2' v-model="rec.observacion2" class="form-control form-control-sm"
                   ref='observacion2' :disabled="disabledForm"
                   @input="input($event.target)" :pattern="er_observaciones" autocomplete='off'>
@@ -306,7 +306,7 @@ export default {
     }
   },  
   computed: { // Expone state al template
-     ...mapState(['host','User_Name','dev','er_numeroExpediente','er_diocesis','er_parroquia','er_apellidosNombres','er_direccion','er_vicario','er_cabecera','er_observaciones' ]), 
+     ...mapState(['host','User_Name','Vicario','dev','er_numeroExpediente','er_diocesis','er_parroquia','er_apellidosNombres','er_direccion','er_vicario','er_cabecera','er_observaciones' ]), 
   },
   methods: {
     setComponent(){
@@ -320,6 +320,7 @@ export default {
       if( this.crud == 'C' ) {
         this.title_detail = 'Nuevo'; 
         this.disabledForm = false;
+        this.rec.vicario = this.Vicario;
         // console.log('fechaHoy = ', this.fechaHoy);
         // this.rec.fecha =  moment(this.fechaHoy).format('YYYY-MM-DD');
         if(this.dev=='dev'){

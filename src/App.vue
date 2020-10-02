@@ -26,10 +26,17 @@ export default {
       // console.log('app.config_app()');
       this.$store.dispatch('config_app');
 
-    }
+    },
+    config_parametros(){
+      // console.log('app.config_app()');
+      this.$store.dispatch('config_parametros');
+
+    }    
   },
   mounted: function(){
   this.config_app();
+  this.config_parametros();
+
  this.$router.push('/menu');  
   }   
 }

@@ -233,7 +233,7 @@
           </div> 
           <div class="form-row">
             <div class="col-12 form-group">
-              <label for="observaciones" class="formControlLabel">Observaciones 1</label>
+              <label for="observaciones" class="formControlLabel">Observacion 1</label>
               <input type="text" name='observaciones' v-model="rec.observaciones1" class="form-control form-control-sm"
                   ref='observaciones1' :disabled="disabledForm"
                   @input="input($event.target)" :pattern="er_observaciones" autocomplete='off'>
@@ -242,7 +242,7 @@
           </div> 
           <div class="form-row">
             <div class="col-12 form-group">
-              <label for="observaciones" class="formControlLabel">Observaciones 2</label>
+              <label for="observaciones" class="formControlLabel">Observacion 2</label>
               <input type="text" name='observaciones' v-model="rec.observaciones2" class="form-control form-control-sm"
                   ref='observaciones2' :disabled="disabledForm"
                   @input="input($event.target)" :pattern="er_observaciones" autocomplete='off'>
@@ -301,7 +301,7 @@ export default {
     }
   },  
   computed: { // Expone state al template
-     ...mapState(['host','User_Name','dev','er_numeroExpediente','er_diocesis','er_parroquia','er_apellidosNombres','er_direccion','er_vicario','er_cabecera','er_observaciones' ]), 
+     ...mapState(['host','User_Name','Vicario','dev','er_numeroExpediente','er_diocesis','er_parroquia','er_apellidosNombres','er_direccion','er_vicario','er_cabecera','er_observaciones' ]), 
   },
   methods: {
     setComponent(){
@@ -315,6 +315,7 @@ export default {
       if( this.crud == 'C' ) {
         this.title_detail = 'Nuevo'; 
         this.disabledForm = false;
+        this.rec.vicario = this.Vicario;
         // console.log('fechaHoy = ', this.fechaHoy);
         // this.rec.fecha =  moment(this.fechaHoy).format('YYYY-MM-DD');
         if(this.dev=='dev'){
@@ -336,7 +337,7 @@ export default {
           this.rec.direccionNovio = 'Dirección novio'
           this.rec.padreNovio = 'Padre Novia'
           this.rec.padreNovio = 'Madre Novia'
-          this.rec.vicario = 'Vicario ----------------'
+          // this.rec.vicario = 'Vicario ----------------'
           // this.rec.fechaMatCivil =  moment(this.fechaHoy).format('YYYY-MM-DD');
           this.rec.fechaMatReligioso =  moment(this.fechaHoy).format('YYYY-MM-DD');
           this.rec.fechaAutorizacion =  moment(this.fechaHoy).format('YYYY-MM-DD');

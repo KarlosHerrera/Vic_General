@@ -9,7 +9,7 @@ export function evalInput(obj){
 	//let ele = document.querySelector("#"+e.target.id);	// obj = objeto evento es pasado como argumento
 	let idForm = obj.form.id;								// Id del formulario padre
 	let objForm = document.getElementById(idForm);			// Form padre del input 
-	if( !objForm ) console.log('Form no encontrado!');
+	if( !objForm ) console.log(`Form (${idForm})no encontrado!`);
 	// let btnSave = objForm.getAttribute('data-btnSave');	/ objeto boton Save (form: data-btnSave='idBoton')
 	let btnEnable = objForm.getAttribute('data-btnEnable');	// objeto boton por habilitar (form: data-btnEnable='idBoton')
 		// let btnHabilita = objForm.getAttribute('data-btnHabilita');	// TemporaL
@@ -67,6 +67,7 @@ export function evalInput(obj){
 		if( btnEnable ) btnEnable.setAttribute('disabled','');
 	}
 }
+
 export function evalValue(id){
 	console.log(`evalValue(${id})`);
 	if( !id || id == null || !typeof(Id) == 'string') return false;	
@@ -125,17 +126,40 @@ function evalExpReg(sPatron, sValor){
 		return true;					
 }
 
-export function evalForm(idForm){
-	if( !idForm) return false;
-	var oForm=document.getElementById(idForm);
-	if( !oForm ){ console.log('Form (id='+idForm+'), not found.'); return false; }
-	if( oForm.nodeName !== 'FORM' ){ console.log('Id = '+idForm+', no es un FORM'); return false;}
+export function evaluaForm(oForm){
+	console.log(`evalForm(${oForm})`);
+	if( !oForm){ console.log('Falta parametro'); return false;}
+	if( !oForm ){ console.log('Form not found.'); return false; }
+	if( oForm.nodeName !== 'FORM' ){ console.log('Objeto enviado, no es un FORM'); return false;}
+	let btnEnable = oForm.getAttribute('data-btnEnable');	// objeto boton por habilitar (form: data-btnEnable='idBoton')
 	if ( oForm.checkValidity() ){
+		console.log('valido')
+		if( btnEnable ) btnEnable.removeAttribute('disabled');
+		return true;	
+	}else{
+		console.log('invalido')		
+		if( btnEnable ) btnEnable.setAttribute('disabled','');
 		return false;
 	}
-	return true;			
 }
-
+export function evalForm(idForm){
+	console.log(`evalForm(${idForm})`);
+	if( !idForm){ console.log('Falta parametro'); return false;}
+	let oForm = document.getElementById(idForm);	
+	console.dir(oForm)
+	if( !oForm ){ console.log('Form not found.'); return false; }
+	if( oForm.nodeName !== 'FORM' ){ console.log('Objeto enviado, no es un FORM'); return false;}
+	let btnEnable = oForm.getAttribute('data-btnEnable');	// objeto boton por habilitar (form: data-btnEnable='idBoton')
+	if ( oForm.checkValidity() ){
+		console.log('valido')
+		if( btnEnable ) btnEnable.removeAttribute('disabled');
+		return true;	
+	}else{
+		console.log('invalido')		
+		if( btnEnable ) btnEnable.setAttribute('disabled','');
+		return false;
+	}
+}
 export function seePassword(self, keys){
 	// console.log('seePassword()');
 	// if( arguments.length != 2) console.log('seePassword() -> Arguments no valid.');

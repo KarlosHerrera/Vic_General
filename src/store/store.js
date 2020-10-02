@@ -19,11 +19,12 @@ let fechaHoy = new Date();
 export default new Vuex.Store({
   state: {
     User_Name: 'Admin',
-    User_Role: 'Adminstrador',
+    User_Role: 'Administrador',
     dev: 'dev1',
     record: {},
     fechaHoy: fechaHoy,
     host: host,
+    Vicario: '',
 
     er_numeroExpediente: "^[0-9A-Z]{1}[a-zA-Z0-9 -.]{1,9}$",
     er_fecha: "",
@@ -61,7 +62,9 @@ export default new Vuex.Store({
     setRecord: function(state, record){
       state.record = record;
     },
-
+    setVicario: function(state, data){
+      state.Vicario = data;
+    },
   },
   actions: {
       // { commit, dispatch } = objetos contexto
@@ -105,7 +108,14 @@ export default new Vuex.Store({
       // console.log('store.host: ', app.host)
       context.commit('setHost', app.host);
 
-    }, 
+    },
+    config_parametros: function(context){
+      // console.log('store.config_app()');
+      let app = require('./../assets/json/config_parametros.json');
+      // console.log('store.host: ', app.host)
+      context.commit('setVicario', app.Vicario);
+
+    },     
     // usuarios
 
   },

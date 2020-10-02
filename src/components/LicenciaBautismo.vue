@@ -91,14 +91,14 @@
             <div class="col-1 form-group">
               <label for="edad" class="formControlLabel">Edad*</label>
               <input type="text" name='edad' v-model.number="rec.edad" class="form-control form-control-sm align_right" 
-                ref='edad' id='edad' :disabled="disabledForm"
+                ref='edad' id='edad' :disabled="disabledForm" required
                 @input="input($event.target)" pattern="^[0-9]{1,2}$" autocomplete='off'>
               <small id="" class="form-text text-muted"></small>
             </div>
             <div class="col-11 form-group">
               <label for="lugarnacimiento" class="formControlLabel">Lugar-Nacimiento*</label>
               <input type="text" name='lugarnacimiento' v-model="rec.lugarNacimiento" class="form-control form-control-sm" 
-                ref='lugarnacimiento' id='lugarnacimiento' :disabled="disabledForm"
+                ref='lugarnacimiento' id='lugarnacimiento' :disabled="disabledForm" required
                 @input="input($event.target)" :pattern="er_lugar" autocomplete='off' data-upper='1c'>
               <small id="" class="form-text text-muted"></small>
             </div>                                     
@@ -140,7 +140,7 @@
             <div class="col-5 form-group">
               <label for="parestesco1" class="formControlLabel">Parentesco 1</label>
               <input type="text" name='parentesco1' v-model="rec.parentesco1" class="form-control form-control-sm"
-                  ref='parentesco2' :disabled="disabledForm"
+                  ref='parentesco1' :disabled="disabledForm"
                   @input="input($event.target)" :pattern="er_parentesco" autocomplete='off'>
               <small id="" class="form-text text-muted"></small>
             </div>            
@@ -180,7 +180,7 @@
               <label for="observacion1" class="formControlLabel">Observacion 1</label>
               <input type="text" name='observacion1' v-model="rec.observacion1" class="form-control form-control-sm"
                   ref='observacion1' :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_observacion" autocomplete='off'>
+                  @input="input($event.target)" :pattern="er_observaciones" autocomplete='off'>
               <small id="" class="form-text text-muted"></small>
             </div>
           </div> 
@@ -189,7 +189,7 @@
               <label for="observacion2" class="formControlLabel">Observacion 2</label>
               <input type="text" name='observacion2' v-model="rec.observacion2" class="form-control form-control-sm"
                   ref='observacion2' :disabled="disabledForm"
-                  @input="input($event.target)" :pattern="er_observacion" autocomplete='off'>
+                  @input="input($event.target)" :pattern="er_observaciones" autocomplete='off'>
               <small id="" class="form-text text-muted"></small>
             </div>
           </div>          
@@ -210,7 +210,7 @@ const idForm = 'formExpediente';
 
 import opcionesCrud from '@/components/opciones-crud.vue'
 
-import { evalInput, evalValue, evalDate } from '@/assets/js/form';
+import { evalInput, evalValue, evalDate, evalForm } from '@/assets/js/form';
 
 import moment from 'moment';
 moment.locale('es');
@@ -244,28 +244,29 @@ export default {
     }
   },  
   computed: { // Expone state al template
-     ...mapState(['host','User_Name','dev','er_numeroExpediente','er_parroquia','er_apellidosNombres','er_direccion','er_vicario','er_observacion','er_testigo','er_parentesco','er_lugar']), 
+     ...mapState(['host','User_Name','Vicario','dev','er_numeroExpediente','er_parroquia','er_apellidosNombres','er_direccion','er_vicario','er_observaciones','er_testigo','er_parentesco','er_lugar']), 
   },
   methods: {
     setComponent(){
     //   let ruta = require('./../assets/json/config_img.json');
     //   this.pathImg = ruta.pathFirmas;
-    //   if( !this.datosExpediente.crud ) { this.verAddImg= false, this.verDelImg = false }      
-
+    //   if( !this.datosExpediente.crud ) { this.verAddImg= false, this.verDelImg = false }   
+    
     },
     list_view(){
       console.log('list_view()'); 
-      if( this.crud == 'C' ) {
+      if( this.crud == 'C' ){
         this.title_detail = 'Nuevo'; 
         this.disabledForm = false;
+        this.rec.vicario = this.Vicario;
         if(this.dev=='dev'){
-          this.rec.numeroExpediente = '4001';
+          this.rec.numeroExpediente = '4004';
           this.rec.fechaExpediente = moment(this.fechaHoy).format('YYYY-MM-DD');
           this.rec.parroquiaBautizo = 'Parroquia bautizo' 
           this.rec.apellidos = 'Apellidos'
           this.rec.nombres = 'Nombres'
 
-          // this.rec.edad = '07'
+          this.rec.edad = '07'
           this.rec.lugarNacimiento = 'Lugar de Nacimiento'
           this.rec.direccion = 'Dirección bautizado'
 
@@ -273,9 +274,15 @@ export default {
           this.rec.tiempoIns = 'T[iempo'
 
           this.rec.fechaAutorizacion = ''
-          this.rec.vicario = 'Vicario ----------------'
-        }
 
+          this.rec.fechaAutorizacion = moment(this.fechaHoy).format('YYYY-MM-DD');
+        }
+        console.dir(this.$refs.numeroExpediente);
+        // this.$refs.numeroExpediente.focus();
+        // evalForm(this.$refs[idForm]);
+        let obj = this.$refs.formExpediente;
+        console.dir(obj)
+        evalForm(idForm);
       }
       if( this.crud == 'R' ) this.title_detail = 'Datos';           
       if( this.crud == 'U' ) this.title_detail = 'Edita';

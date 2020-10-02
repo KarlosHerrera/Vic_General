@@ -197,7 +197,7 @@ export default {
     }
   },  
   computed: { // Expone state al template
-     ...mapState(['host','User_Name','dev','er_numeroExpediente','er_parroquia','er_apellidosNombres','er_impedimento','er_causal','er_vicario','er_observaciones' ]), 
+     ...mapState(['host','User_Name','dev','Vicario','er_numeroExpediente','er_parroquia','er_apellidosNombres','er_impedimento','er_causal','er_vicario','er_observaciones' ]), 
   },
   methods: {
     setComponent(){
@@ -211,7 +211,7 @@ export default {
       if( this.crud == 'C' ) {
         this.title_detail = 'Nueva'; 
         this.disabledForm = false;
-
+        this.rec.vicario = this.Vicario;
         if(this.dev=='dev'){        
           this.rec.numeroExpediente = '7000';
           this.rec.fechaExpediente = moment(this.fechaHoy).format('YYYY-MM-DD');
@@ -225,7 +225,7 @@ export default {
           this.rec.numeroDispensa='Cuatro'
 
           this.rec.fechaAutorizacion =  moment(this.fechaHoy).format('YYYY-MM-DD');
-          this.rec.vicario = 'Vicario ----------------'
+          // this.rec.vicario = 'Vicario ----------------'
           this.rec.observacion1= 'Procedimientos1 1'     
           this.rec.observacion2= 'Procedimientos1 2'     
         }
